@@ -1,0 +1,858 @@
+/* Estilos generales de la app */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+/* Estilos para el contenedor de Inicio */
+.inicio-container {
+  padding: 20px;
+}
+
+.inicio-header {
+  text-align: center;
+}
+
+.inicio-logo {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.inicio-title {
+  font-size: 2rem;
+  color: white;
+}
+
+/* Estilos para el formulario de búsqueda */
+.inicio-search {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-input {
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.search-button {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #45a049;
+}
+
+/* Categorías en Inicio */
+.inicio-categories {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.category-card {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
+  text-align: center;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.category-card:hover {
+  background-color: #e0e0e0;
+}
+
+/* Estilos de Login y Registro */
+.login-container, .register-container {
+  padding: 20px;
+}
+
+.login-header, .register-header {
+  text-align: center;
+}
+
+.login-logo, .register-logo {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.login-form, .register-form {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.login-input, .register-input {
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.login-button, .register-button {
+  padding: 10px;
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.login-button:hover, .register-button:hover {
+  background-color: #45a049;
+}
+
+.footer-link {
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+  color: #007BFF;
+}
+
+.footer-link:hover {
+  color: #0056b3;
+}
+
+/* Footer de navegación */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  display: flex;
+  justify-content: spaceAquí está el archivo CSS completo que abarca toda la aplicación
+}
+
+/* General Layout */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  border-radius: 12px; /* Botones redondeados */
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+/* Botones genéricos en blanco y negro */
+button.white-black {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
+
+button.white-black:hover {
+  background-color: black;
+  color: white;
+}
+
+/* Botones importantes en verde */
+button.green {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button.green:hover {
+  background-color: #45a049;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #333;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.footer-button {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.footer-button:hover {
+  color: #4CAF50;
+}
+
+.footer-button i {
+  font-size: 1.5rem;
+}
+
+/* Login y Registro */
+.login-container, .register-container {
+  padding: 20px;
+}
+
+.login-header, .register-header {
+  text-align: center;
+}
+
+.login-logo, .register-logo {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.login-input, .register-input {
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.login-button, .register-button {
+  width: 109%;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 12px;
+}
+
+.login-button:hover, .register-button:hover {
+  background-color: #45a049;
+}
+
+.inicio-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+button.green {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+button.green:hover {
+  background-color: #45a049;
+}
+
+/* Estilos para el botón de Crear Espacios */
+.inicio-create-space {
+  margin-top: 20px;
+  text-align: center;
+}
+
+button.green {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 12px;
+  padding: 10px 20px;
+}
+
+button.green:hover {
+  background-color: #45a049;
+}
+
+/* Estilos del formulario de Creador de Espacios */
+.create-space-form {
+  margin-top: 20px;
+  background-color: #222;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+}
+
+.create-space-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #333;
+  color: white;
+}
+
+/* Estilos para los botones de los espacios */
+.category-button {
+  background-color: #444;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.category-button:hover {
+  background-color: #555;
+}
+
+/* Estilo para los elementos del espacio */
+.espacio-container {
+  padding: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #333;
+  color: white;
+}
+
+/* Botón verde para agregar item */
+.green {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 12px;
+  padding: 10px 20px;
+}
+
+.green:hover {
+  background-color: #45a049;
+}
+
+/* Lista de items */
+.items-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.items-list li {
+  background-color: #444;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  color: white;
+}
+
+/* Estilos para el formulario de creación de espacio */
+.create-space-form {
+  margin-top: 20px;
+  background-color: #222;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+}
+
+.create-space-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #333;
+  color: white;
+}
+
+/* Botón verde */
+.green {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 12px;
+  padding: 10px 20px;
+}
+
+.green:hover {
+  background-color: #45a049;
+}
+
+/* Botones de categorías (espacios) */
+.category-button {
+  background-color: #444;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.category-button:hover {
+  background-color: #555;
+}
+
+/* Estilos para el formulario de creación de item */
+.create-item-form {
+  margin-top: 20px;
+  background-color: #222;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+}
+
+.create-item-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #333;
+  color: white;
+}
+
+/* Botón verde */
+.green {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 12px;
+  padding: 10px 20px;
+}
+
+.green:hover {
+  background-color: #45a049;
+}
+
+/* Estilos para el menú contextual */
+.context-menu {
+  position: absolute;
+  background-color: #333;
+  border-radius: 8px;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1000;
+}
+
+.context-menu button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.context-menu button:hover {
+  background-color: #444;
+}
+
+/* Estilos para la búsqueda */
+.search-input {
+  padding: 10px;
+  width: 200px;
+  margin-right: 10px;
+}
+
+.search-button {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px; /* Agrega espacio a la derecha */
+}
+
+.clear-button {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+
+.search-result {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+}
+
+.inicio-create-space {
+  margin-top: 20px;
+}
+
+.inicio-categories {
+  margin-top: 20px;
+}
+
+.category-button {
+  padding: 10px;
+  margin: 5px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.category-button:hover {
+  background-color: #555;
+}
+
+/* Estilos para el menú flotante */
+.context-menu {
+  position: absolute;
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  z-index: 100;
+}
+
+.context-menu button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.context-menu button:hover {
+  background-color: #4CAF50;
+}
+
+.category-button {
+  padding: 10px;
+  margin: 5px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.category-button:hover {
+  background-color: #555;
+}
+
+/* Estilos para el formulario de edición (similares a editar item) */
+.editar-espacio-container {
+  padding: 20px;
+  background-color: #222;
+  color: white;
+}
+
+.editar-header h1 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.editar-espacio-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.editar-espacio-form label {
+  font-weight: bold;
+}
+
+.editar-espacio-form input,
+.editar-espacio-form textarea {
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #333;
+  color: white;
+}
+
+.editar-espacio-form button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.editar-espacio-form button:hover {
+  background-color: #45a049;
+}
+
+.buscar-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.buscar-bar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.buscar-input {
+  width: 80%;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.buscar-button {
+  position: absolute;
+  right: 50px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
+/* Ajustes Container */
+.ajustes-container {
+  padding: 20px;
+  background-color: #000; /* Cambiado a negro */
+  color: white; /* Asegura que el texto sea visible sobre el fondo negro */
+  min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.profile-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.ajustes-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ajuste-button {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 15px;
+  background-color: #333; /* Fondo oscuro para los botones */
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.ajuste-button i {
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+
+.ajuste-button:hover {
+  background-color: #4caf50;
+  color: white;
+}
+
+
+.informacion-container, .cambiar-contraseña-container, .cerrar-sesion-container, .wisr-container, .cambiar-usuario-container {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.form-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.form-container h1 {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+
+.form-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.form-container h1 {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Estilos para el SearchWidget */
+.search-widget {
+  width: 300px;  /* Ajustamos el tamaño del widget */
+  height: 300px; /* La altura es igual que el ancho para hacer el widget cuadrado */
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;  /* Distribuye el espacio uniformemente entre los elementos */
+  padding: 15px;
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  /* Centrado en la pantalla */
+}
+
+.search-widget h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.search-input {
+  width: 100%;  /* Barra de búsqueda más estrecha */
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;  /* Botones en columna */
+  gap: 10px;  /* Espaciado entre los botones */
+}
+
+.search-button, .clear-button {
+  width: 80%;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  width: 100%;  /* Hace que los botones se ajusten al tamaño */
+}
+
+.search-button {
+  background-color: #45a049;
+  color: white;
+}
+
+.search-button:hover {
+  background-color: #aaa;
+}
+
+.clear-button {
+  background-color: #ccc;
+  color: black;
+}
+
+.clear-button:hover {
+  background-color: #aaa;
+}
+
+.search-results {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  font-size: 14px;
+  max-height: 100px;  /* Limita la altura de los resultados */
+  overflow-y: auto;  /* Permite desplazamiento si hay demasiados resultados */
+}
+
+.search-results li {
+  padding: 4px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.search-results li:last-child {
+  border-bottom: none;
+}
