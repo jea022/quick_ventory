@@ -6,7 +6,7 @@ const Inicio = () => {
   const [spaces, setSpaces] = useState([]);
   const [search, setSearch] = useState('');
   const [foundItem, setFoundItem] = useState(null);
-  const [contextMenu, setContextMenu] = useState(null); // Para manejar el menú flotante
+  const [contextMenu, setContextMenu] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -83,7 +83,6 @@ const Inicio = () => {
         <button className="clear-button" onClick={handleClearSearch}>Limpiar</button>
       </div>
 
-      {/* Mostrar el resultado de la búsqueda */}
       {foundItem && (
         <div className="search-result">
           <p>Objeto encontrado: <strong>{foundItem.name}</strong></p>
@@ -91,12 +90,10 @@ const Inicio = () => {
         </div>
       )}
 
-      {/* Botón para crear un nuevo espacio */}
       <div className="inicio-create-space">
         <button className="green" onClick={handleCreateSpace}>Crear Espacio</button>
       </div>
 
-      {/* Mostrar los espacios creados */}
       <div className="inicio-categories">
         {spaces.length > 0 ? (
           spaces.map((space, index) => (
@@ -104,7 +101,7 @@ const Inicio = () => {
               key={index}
               className="category-button"
               onClick={() => handleSpaceClick(space.name)}
-              onContextMenu={(e) => showContextMenu(e, space)} // Muestra el menú flotante
+              onContextMenu={(e) => showContextMenu(e, space)}
             >
               {space.name}
             </div>
@@ -114,7 +111,6 @@ const Inicio = () => {
         )}
       </div>
 
-      {/* Menú flotante */}
       {contextMenu && (
         <div
           className="context-menu"

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { db } from '../firestoreConfig';
 import { collection, query, where, getDocs } from 'firebase/firestore';
+import '../styles.css'; // Importa el archivo CSS
 
 const SearchWidget = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,13 +18,16 @@ const SearchWidget = () => {
   return (
     <div>
       <h2>Buscar Ítems</h2>
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Buscar por nombre"
-      />
-      <button onClick={handleSearch}>Buscar</button>
+      <div className="search-container-widget">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Buscar por nombre"
+          className="search-input"
+        />
+        <button onClick={handleSearch}>Buscar</button>
+      </div>
       <ul>
         {results.map((item, index) => (
           <li key={index}>{item.nombre}</li>

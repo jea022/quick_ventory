@@ -5,7 +5,6 @@ import Register from './components/Register';
 import Inicio from './components/Inicio';
 import SearchItem from './components/SearchItems';
 import Footer from './components/Footer';
-import Navbar from './components/Navbar';
 import './styles.css';
 import CrearEspacio from './components/CrearEspacio';
 import Espacio from './components/Espacio';
@@ -18,8 +17,8 @@ import CerrarSesion from './components/CerrarSesion';
 import CambiarContraseña from './components/CambiarContraseña';
 import Informacion from './components/Informacion';
 import CambiarUsuario from './components/CambiarUsuario';
-import Wisr from './components/Wisr'; // Quita la llave extra aquí
-import EditarInformacion from './components/EditarInformacion'; // Importa correctamente
+import Wisr from './components/Wisr';
+import EditarInformacion from './components/EditarInformacion';
 
 function AppWrapper() {
   return (
@@ -32,19 +31,10 @@ function AppWrapper() {
 function App() {
   const location = useLocation();
 
-  // Condición para ocultar el footer en las páginas de login y registro
   const hideFooter = location.pathname === '/login' || location.pathname === '/register';
 
   return (
     <div className="app">
-      {/* Mostrar el botón de búsqueda solo en la ruta /searchItem */}
-      {location.pathname === '/searchItem' && (
-        <div className="search-bar">
-          <input type="text" placeholder="Buscar Item" />
-          <button>Buscar</button>
-        </div>
-      )}
-
       <Routes>
         <Route path="/" element={<Inicio />} />
         <Route path="/login" element={<Login />} />
@@ -61,11 +51,9 @@ function App() {
         <Route path="/cerrar-sesion" element={<CerrarSesion />} />
         <Route path="/wisr" element={<Wisr />} />
         <Route path="/cambiar-contraseña" element={<CambiarContraseña />} />
-        <Route path="/editar-informacion" element={<EditarInformacion />} /> {/* Asegúrate de tener la ruta */}
+        <Route path="/editar-informacion" element={<EditarInformacion />} />
         <Route path="/cambiar-usuario" element={<CambiarUsuario />} />
       </Routes>
-
-      {/* Ocultar el footer si estamos en login o register */}
       {!hideFooter && <Footer />}
     </div>
   );
