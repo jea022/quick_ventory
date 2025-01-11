@@ -71,16 +71,20 @@ const Inicio = () => {
         <h1 className="inicio-title">Bienvenido a QuickVentory!</h1>
       </header>
 
-      <div className="inicio-search">
-        <input
-          type="text"
-          placeholder="Buscar Item..."
-          className="search-input"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <button className="search-button" onClick={handleSearch}>Buscar</button>
-        <button className="clear-button" onClick={handleClearSearch}>Limpiar</button>
+      <div className="search-widget">
+        <div className="search-container-widget">
+          <input
+            type="text"
+            placeholder="Buscar Item..."
+            className="search-input"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <div className="search-buttons">
+            <button className="search-button" onClick={handleSearch}>Buscar</button>
+            <button className="clear-button" onClick={handleClearSearch}>Limpiar</button>
+          </div>
+        </div>
       </div>
 
       {foundItem && (
@@ -91,7 +95,9 @@ const Inicio = () => {
       )}
 
       <div className="inicio-create-space">
-        <button className="green" onClick={handleCreateSpace}>Crear Espacio</button>
+        <div className="create-space-container">
+          <button className="primary" onClick={handleCreateSpace}>Crear Espacio</button>
+        </div>
       </div>
 
       <div className="inicio-categories">
