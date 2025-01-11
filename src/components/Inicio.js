@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Banner from './Banner';
 import '../styles.css';
 
 const Inicio = () => {
@@ -25,11 +26,13 @@ const Inicio = () => {
   const handleSearch = () => {
     let itemFound = null;
     spaces.forEach(space => {
-      space.items.forEach(item => {
-        if (item.name.toLowerCase().includes(search.toLowerCase())) {
-          itemFound = { name: item.name, space: space.name };
-        }
-      });
+      if (space.items) {
+        space.items.forEach(item => {
+          if (item.name.toLowerCase().includes(search.toLowerCase())) {
+            itemFound = { name: item.name, space: space.name };
+          }
+        });
+      }
     });
     setFoundItem(itemFound);
   };
@@ -66,8 +69,8 @@ const Inicio = () => {
 
   return (
     <div className="inicio-container" onClick={hideContextMenu}>
+      <Banner />
       <header className="inicio-header">
-        <img src="/images/logo.png" alt="Logo" className="inicio-logo" />
         <h1 className="inicio-title">Bienvenido a QuickVentory!</h1>
       </header>
 
@@ -84,37 +87,35 @@ const Inicio = () => {
             <button className="search-button" onClick={handleSearch}>Buscar</button>
             <button className="clear-button" onClick={handleClearSearch}>Limpiar</button>
           </div>
+          {foundItem && (
+            <div className="search-result">
+              <p>Objeto encontrado: <strong>{foundItem.name}</strong></p>
+              <p>Ubicación: <strong>{foundItem.space}</strong></p>
+            </div>
+          )}
         </div>
       </div>
-
-      {foundItem && (
-        <div className="search-result">
-          <p>Objeto encontrado: <strong>{foundItem.name}</strong></p>
-          <p>Ubicación: <strong>{foundItem.space}</strong></p>
-        </div>
-      )}
 
       <div className="inicio-create-space">
         <div className="create-space-container">
-          <button className="primary" onClick={handleCreateSpace}>Crear Espacio</button>
+          <button className="create-space-button" onClick={handleCreateSpace}>Crear Espacio</button>
+          <div className="categories-container">
+            {spaces.length > 0 ? (
+              spaces.map((space, index) => (
+                <div
+                  key={index}
+                  className="category-button"
+                  onClick={() => handleSpaceClick(space.name)}
+                  onContextMenu={(e) => showContextMenu(e, space)}
+                >
+                  {space.name}
+                </div>
+              ))
+            ) : (
+              <p>No hay espacios creados</p>
+            )}
+          </div>
         </div>
-      </div>
-
-      <div className="inicio-categories">
-        {spaces.length > 0 ? (
-          spaces.map((space, index) => (
-            <div
-              key={index}
-              className="category-button"
-              onClick={() => handleSpaceClick(space.name)}
-              onContextMenu={(e) => showContextMenu(e, space)}
-            >
-              {space.name}
-            </div>
-          ))
-        ) : (
-          <p>No hay espacios creados</p>
-        )}
       </div>
 
       {contextMenu && (

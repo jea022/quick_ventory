@@ -1,10 +1,10 @@
 /* General */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: #444; /* Fondo consistente */
   margin: 0;
   padding: 0;
-  color: #333;
+  color: #fff; /* Texto blanco para contraste */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -20,6 +20,16 @@ body {
   background-color: #000; /* Fondo negro dentro del margen */
   color: #fff; /* Texto blanco para contraste */
   box-sizing: border-box;
+}
+
+/* Fullscreen Container */
+.fullscreen-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #444; /* Fondo consistente */
 }
 
 /* Header */
@@ -86,17 +96,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  border: 1px solid #4CAF50;
+  padding: 40px; /* Aumenta el padding */
+  border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #000; /* Fondo negro */
-  width: 300px; /* Ajusta el ancho del widget */
+  width: 350px; /* Aumenta el ancho del widget */
 }
 
 .search-input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 15px; /* Aumenta el padding */
+  margin-bottom: 15px; /* Aumenta el margen inferior */
   border-radius: 4px;
   border: 1px solid #ccc;
 }
@@ -107,10 +117,10 @@ body {
   width: 100%;
 }
 
-.search-button, .clear-button {
+.search-button, .clear-button, .create-space-button {
   width: 48%; /* Ajusta el ancho de los botones */
-  padding: 10px;
-  font-size: 14px;
+  padding: 15px; /* Aumenta el padding */
+  font-size: 16px; /* Aumenta el tamaño de la fuente */
   border-radius: 4px;
   border: none;
   cursor: pointer;
@@ -132,6 +142,11 @@ body {
 
 .clear-button:hover {
   background-color: #e53935;
+}
+
+.search-result {
+  margin-top: 10px;
+  color: #fff;
 }
 
 /* Inventory List */
@@ -174,7 +189,7 @@ body {
 /* Inicio */
 .inicio-container {
   padding: 20px;
-  background-color: #444;
+  background-color: #444; /* Fondo consistente */
   border-radius: 8px;
   margin-bottom: 20px;
   color: #fff;
@@ -186,6 +201,7 @@ body {
 .inicio-header {
   text-align: center;
   margin-bottom: 20px;
+  margin-top: 60px; /* Añade margen superior para aumentar el espacio */
 }
 
 .inicio-logo {
@@ -205,7 +221,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
-  width: 300px; /* Ajusta el ancho de la barra de búsqueda */
+  width: 350px; /* Aumenta el ancho del contenedor */
 }
 
 .search-result {
@@ -222,11 +238,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  border: 1px solid #4CAF50;
+  padding: 40px; /* Aumenta el padding */
+  border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #000; /* Fondo negro */
-  width: 300px; /* Ajusta el ancho del contenedor */
+  width: 350px; /* Aumenta el ancho del contenedor */
+}
+
+.create-space-button {
+  margin-top: 20px; /* Añade margen superior al botón */
+  width: 100%; /* Asegura que el botón ocupe todo el ancho del contenedor */
 }
 
 .inicio-categories {
@@ -236,10 +257,17 @@ body {
   justify-content: center;
 }
 
+.categories-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
 .category-button {
   background-color: #4CAF50;
   color: white;
-  padding: 10px;
+  padding: 15px; /* Aumenta el padding */
   border-radius: 8px;
   cursor: pointer;
   text-align: center;
@@ -274,6 +302,16 @@ body {
   background-color: #f0f0f0;
 }
 
+/* Banner Logo */
+.banner-logo {
+  position: absolute;
+  bottom: -50px; /* Ajusta esta propiedad para que la mitad del logo esté dentro del banner */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: auto;
+}
+
 /* Forms */
 form {
   display: flex;
@@ -281,26 +319,28 @@ form {
   gap: 10px;
 }
 
-input[type="text"], input[type="password"], input[type="email"] {
-  padding: 10px;
+input[type="text"], input[type="password"], input[type="email"], input[type="file"], select, textarea {
+  padding: 15px; /* Aumenta el padding */
   border-radius: 4px;
   border: 1px solid #ccc;
   width: 100%;
+  margin-bottom: 15px; /* Aumenta el margen inferior */
 }
 
 button {
-  padding: 10px;
+  padding: 15px; /* Aumenta el padding */
   border-radius: 4px;
   border: none;
   cursor: pointer;
+  font-size: 16px; /* Aumenta el tamaño de la fuente */
 }
 
-button.primary {
+button.green {
   background-color: #4CAF50;
   color: white;
 }
 
-button.primary:hover {
+button.green:hover {
   background-color: #45a049;
 }
 
@@ -313,13 +353,132 @@ button.secondary:hover {
   background-color: #e53935;
 }
 
+/* Ajustes */
+.ajustes-container {
+  padding: 40px; /* Aumenta el padding */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #000; /* Fondo negro */
+  width: 350px; /* Aumenta el ancho del contenedor */
+  margin: 0 auto; /* Centra el contenedor */
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ajustes-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ajuste-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px; /* Aumenta el padding */
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px; /* Aumenta el tamaño de la fuente */
+}
+
+.ajuste-button:hover {
+  background-color: #45a049;
+}
+
+/* Login and Register Forms */
+.login-header, .register-header {
+  text-align: center;
+}
+
+.login-logo, .register-logo {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.login-input, .register-input {
+  padding: 15px;
+  margin: 15px 0;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.login-button, .register-button {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 8px;
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover, .register-button:hover {
+  background-color: #45a049;
+}
+
+.login-form, .register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #000; /* Fondo negro */
+  width: 350px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form input, .register-form input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.login-form button, .register-form button {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.login-form button.green, .register-form button.green {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.login-form button.green:hover, .register-form button.green:hover {
+  background-color: #45a049;
+}
+
+.login-form button.secondary, .register-form button.secondary {
+  background-color: #f44336;
+  color: white;
+}
+
+.login-form button.secondary:hover, .register-form button.secondary:hover {
+  background-color: #e53935;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .inicio-search {
     flex-direction: column;
   }
 
-  .search-button, .clear-button {
+  .search-button, .clear-button, .create-space-button {
     width: 100%;
   }
 
