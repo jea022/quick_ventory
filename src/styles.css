@@ -1,10 +1,10 @@
 /* General */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #444; /* Fondo consistente */
+  font-family: 'Roboto', sans-serif; /* Cambia la fuente a Roboto para un look más moderno */
+  background-color: #333; /* Fondo oscuro */
   margin: 0;
   padding: 0;
-  color: #fff; /* Texto blanco para contraste */
+  color: #f4f4f9; /* Texto claro para mejor legibilidad */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -17,8 +17,10 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #000; /* Fondo negro dentro del margen */
-  color: #fff; /* Texto blanco para contraste */
+  background-color: #444; /* Fondo oscuro para el contenedor principal */
+  color: #f4f4f9; /* Texto claro para contraste */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para darle profundidad */
+  border-radius: 8px; /* Bordes redondeados para un look más suave */
   box-sizing: border-box;
 }
 
@@ -29,7 +31,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #444; /* Fondo consistente */
+  background-color: #333; /* Fondo consistente */
 }
 
 /* Header */
@@ -50,7 +52,7 @@ body {
 
 /* Navbar */
 .navbar {
-  background-color: #333;
+  background-color: #444;
   padding: 10px;
   text-align: center;
   color: white;
@@ -60,7 +62,7 @@ body {
 
 /* Footer */
 .footer {
-  background-color: #333;
+  background-color: #444;
   padding: 10px;
   text-align: center;
   color: white;
@@ -97,9 +99,9 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 40px; /* Aumenta el padding */
-  border: 1px solid #ccc;
+  border: 10px solid #757474;
   border-radius: 8px;
-  background-color: #000; /* Fondo negro */
+  background-color: #444; /* Fondo oscuro */
   width: 350px; /* Aumenta el ancho del widget */
 }
 
@@ -108,7 +110,9 @@ body {
   padding: 15px; /* Aumenta el padding */
   margin-bottom: 15px; /* Aumenta el margen inferior */
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
+  background-color: #555; /* Fondo oscuro */
+  color: #ffffff; /* Texto claro */
 }
 
 .search-buttons {
@@ -146,15 +150,15 @@ body {
 
 .search-result {
   margin-top: 10px;
-  color: #fff;
+  color: #f4f4f9; /* Texto claro */
 }
 
 /* Inventory List */
 .inventory-list {
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: #444; /* Fondo oscuro */
   margin-bottom: 20px;
 }
 
@@ -165,25 +169,28 @@ body {
 
 .inventory-list li {
   padding: 10px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #555;
+  color: #f4f4f9; /* Texto claro */
 }
 
 /* Notifications */
 .notifications {
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: #444; /* Fondo oscuro */
   margin-bottom: 20px;
+  color: #f4f4f9; /* Texto claro */
 }
 
 /* Settings */
 .settings {
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: #444; /* Fondo oscuro */
   margin-bottom: 20px;
+  color: #f4f4f9; /* Texto claro */
 }
 
 /* Inicio */
@@ -192,7 +199,7 @@ body {
   background-color: #444; /* Fondo consistente */
   border-radius: 8px;
   margin-bottom: 20px;
-  color: #fff;
+  color: #f4f4f9; /* Texto claro */
   display: flex;
   flex-direction: column;
   align-items: center; /* Centra los contenedores horizontalmente */
@@ -239,9 +246,9 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 40px; /* Aumenta el padding */
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 8px;
-  background-color: #000; /* Fondo negro */
+  background-color: #444; /* Fondo oscuro */
   width: 350px; /* Aumenta el ancho del contenedor */
 }
 
@@ -273,6 +280,7 @@ body {
   text-align: center;
   flex: 1 1 calc(33.333% - 20px);
   box-sizing: border-box;
+  margin: 10px; /* Añade margen para aumentar el espacio entre botones */
 }
 
 .category-button:hover {
@@ -281,8 +289,8 @@ body {
 
 .context-menu {
   position: absolute;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: #444; /* Fondo oscuro */
+  border: 1px solid #555;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
@@ -296,10 +304,11 @@ body {
   background: none;
   cursor: pointer;
   text-align: left;
+  color: #f4f4f9; /* Texto claro */
 }
 
 .context-menu button:hover {
-  background-color: #f0f0f0;
+  background-color: #555; /* Fondo oscuro */
 }
 
 /* Banner Logo */
@@ -322,9 +331,11 @@ form {
 input[type="text"], input[type="password"], input[type="email"], input[type="file"], select, textarea {
   padding: 15px; /* Aumenta el padding */
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   width: 100%;
   margin-bottom: 15px; /* Aumenta el margen inferior */
+  background-color: #555; /* Fondo oscuro */
+  color: #f4f4f9; /* Texto claro */
 }
 
 button {
@@ -356,9 +367,9 @@ button.secondary:hover {
 /* Ajustes */
 .ajustes-container {
   padding: 40px; /* Aumenta el padding */
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 8px;
-  background-color: #000; /* Fondo negro */
+  background-color: #444; /* Fondo oscuro */
   width: 350px; /* Aumenta el ancho del contenedor */
   margin: 0 auto; /* Centra el contenedor */
 }
@@ -405,7 +416,9 @@ button.secondary:hover {
   margin: 15px 0;
   width: 100%;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
+  background-color: #555; /* Fondo oscuro */
+  color: #f4f4f9; /* Texto claro */
 }
 
 .login-button, .register-button {
@@ -429,9 +442,9 @@ button.secondary:hover {
   flex-direction: column;
   align-items: center;
   padding: 40px;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 8px;
-  background-color: #000; /* Fondo negro */
+  background-color: #444; /* Fondo oscuro */
   width: 350px;
   margin: 0 auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -442,7 +455,9 @@ button.secondary:hover {
   padding: 15px;
   margin-bottom: 15px;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
+  background-color: #555; /* Fondo oscuro */
+  color: #f4f4f9; /* Texto claro */
 }
 
 .login-form button, .register-form button {
