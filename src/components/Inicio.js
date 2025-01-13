@@ -68,65 +68,67 @@ const Inicio = () => {
   };
 
   return (
-    <div className="inicio-container" onClick={hideContextMenu}>
-      <Banner />
-      <header className="inicio-header">
-        <h1 className="inicio-title">Bienvenido a QuickVentory!</h1>
-      </header>
+    <div className="fullscreen-container">
+      <div className="inicio-container" onClick={hideContextMenu}>
+        <Banner />
+        <header className="inicio-header">
+          <h1 className="inicio-title">Bienvenido a QuickVentory!</h1>
+        </header>
 
-      <div className="search-widget">
-        <div className="search-container-widget">
-          <input
-            type="text"
-            placeholder="Buscar Item..."
-            className="search-input"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <div className="search-buttons">
-            <button className="search-button" onClick={handleSearch}>Buscar</button>
-            <button className="clear-button" onClick={handleClearSearch}>Limpiar</button>
-          </div>
-          {foundItem && (
-            <div className="search-result">
-              <p>Objeto encontrado: <strong>{foundItem.name}</strong></p>
-              <p>Ubicación: <strong>{foundItem.space}</strong></p>
+        <div className="search-widget">
+          <div className="search-container-widget">
+            <input
+              type="text"
+              placeholder="Buscar Item..."
+              className="search-input"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <div className="search-buttons">
+              <button className="search-button" onClick={handleSearch}>Buscar</button>
+              <button className="clear-button" onClick={handleClearSearch}>Limpiar</button>
             </div>
-          )}
-        </div>
-      </div>
-
-      <div className="inicio-create-space">
-        <div className="create-space-container">
-          <button className="create-space-button" onClick={handleCreateSpace}>Crear Espacio</button>
-          <div className="categories-container">
-            {spaces.length > 0 ? (
-              spaces.map((space, index) => (
-                <div
-                  key={index}
-                  className="category-button"
-                  onClick={() => handleSpaceClick(space.name)}
-                  onContextMenu={(e) => showContextMenu(e, space)}
-                >
-                  {space.name}
-                </div>
-              ))
-            ) : (
-              <p>No hay espacios creados</p>
+            {foundItem && (
+              <div className="search-result">
+                <p>Objeto encontrado: <strong>{foundItem.name}</strong></p>
+                <p>Ubicación: <strong>{foundItem.space}</strong></p>
+              </div>
             )}
           </div>
         </div>
-      </div>
 
-      {contextMenu && (
-        <div
-          className="context-menu"
-          style={{ top: `${contextMenu.y}px`, left: `${contextMenu.x}px` }}
-        >
-          <button onClick={() => handleEditSpace(contextMenu.space)}>Editar</button>
-          <button onClick={() => handleDeleteSpace(contextMenu.space.name)}>Eliminar</button>
+        <div className="inicio-create-space">
+          <div className="create-space-container">
+            <button className="create-space-button" onClick={handleCreateSpace}>Crear Nuevo Espacio</button>
+            <div className="categories-container">
+              {spaces.length > 0 ? (
+                spaces.map((space, index) => (
+                  <div
+                    key={index}
+                    className="category-button"
+                    onClick={() => handleSpaceClick(space.name)}
+                    onContextMenu={(e) => showContextMenu(e, space)}
+                  >
+                    {space.name}
+                  </div>
+                ))
+              ) : (
+                <p>No hay espacios creados</p>
+              )}
+            </div>
+          </div>
         </div>
-      )}
+
+        {contextMenu && (
+          <div
+            className="context-menu"
+            style={{ top: `${contextMenu.y}px`, left: `${contextMenu.x}px` }}
+          >
+            <button onClick={() => handleEditSpace(contextMenu.space)}>Editar</button>
+            <button onClick={() => handleDeleteSpace(contextMenu.space.name)}>Eliminar</button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

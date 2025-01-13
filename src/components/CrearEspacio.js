@@ -26,8 +26,9 @@ const CrearEspacio = () => {
   };
 
   return (
-    <div className="page-container">
-      <div className="create-space-form">
+    <div className="fullscreen-container">
+      <h3 className="section-title">Mis espacios</h3>
+      <div className="create-space-container">
         <h2>Creador de Espacios</h2>
         <form onSubmit={(e) => e.preventDefault()}>
           <input
@@ -50,6 +51,7 @@ const CrearEspacio = () => {
           <input
             type="file"
             onChange={(e) => setPhoto(e.target.files[0])}
+            style={{ fontSize: '1.2em' }} // Aumenta el tamaño del input de archivo
           />
           <button type="button" className="create-space-button" onClick={handleCreate}>
             Crear Espacio

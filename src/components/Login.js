@@ -5,6 +5,8 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const auth = getfirestore();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Lógica de autenticación
