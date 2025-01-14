@@ -1,33 +1,44 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import '../styles.css'; // Asegúrate de ajustar la ruta según tu estructura
+import { Box, Button, Typography, Avatar } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { getAuth, signOut } from 'firebase/auth';
+import '../styles.css';
 
 const Ajustes = () => {
+  const navigate = useNavigate();
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  const manejarCerrarSesion = async () => {
+    await signOut(auth);
+    navigate('/login');
+  };
+
+  const manejarCambiarContrasena = () => {
+    navigate('/cambiar-contrasena');
+  };
+
   return (
-    <div className="ajustes-container">
-      <div className="profile-header">
-      <img src="/images/logo.png" alt="Logo" className="inicio-logo" />
-      <h2>QuickVentory</h2>
-      </div>
-      <h3>Ajustes</h3>
-      <div className="ajustes-buttons">
-        <Link to="/informacion" className="ajuste-button">
-          <i className="fa fa-user"></i> Informacion
-        </Link>
-        <Link to="/cambiar-contrasena" className="ajuste-button">
-          <i className="fa fa-lock"></i> Cambiar Contraseña
-        </Link>
-        <Link to="/cerrar-sesion" className="ajuste-button">
-          <i className="fa fa-power-off"></i> Cerrar Sesión
-        </Link>
-        <Link to="/wisr" className="ajuste-button">
-          WISr
-        </Link>
-        <Link to="/cambiar-usuario" className="ajuste-button">
-          <i className="fa fa-users"></i> Cambiar Usuario
-        </Link>
-      </div>
-    </div>
+    <Box className="ajustes-container">
+      <Typography variant="h4" className="ajustes-title">Ajustes</Typography>
+      <Box className="ajustes-content">
+        <Box className="ajustes-item">
+          <Avatar src={user?.photoURL} alt={user?.displayName} sx={{ width: 80, height: 80, marginBottom: 2 }} />
+          <Typography variant="h6">{user?.displayName}</Typography>
+          <Typography variant="body1">{user?.email}</Typography>
+        </Box>
+        <Box className="ajustes-item">
+          <Button variant="contained" color="primary" onClick={manejarCambiarContrasena}>
+            Cambiar Contraseña
+          </Button>
+        </Box>
+        <Box className="ajustes-item">
+          <Button variant="contained" color="secondary" onClick={manejarCerrarSesion}>
+            Cerrar Sesión
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
