@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { auth, db } from '../firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 import '../styles.css'; // Cambia la ruta según la estructura correcta
 
 const Register = () => {
@@ -6,35 +10,47 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      console.log('Las contraseñas no coinciden');
+      setError('Las contraseñas no coinciden');
       return;
     }
-    // Lógica de registro
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      await setDoc(doc(db, 'users', user.uid), {
+        nombre,
+        email
+      });
+      navigate('/'); // Redirige al inicio después de registrarse
+    } catch (error) {
+      setError('Error al registrarse. Inténtalo de nuevo.');
+    }
+  };
+
+  const handleLoginRedirect = () => {
+    navigate('/login'); // Redirige a la página de inicio de sesión
   };
 
   return (
-    <div className="register-container">
-      <header className="register-header">
-      <img src="/images/logo.png" alt="Logo" className="inicio-logo" />
-      <h1>Crear cuenta</h1>
-      </header>
+    <div className="register-page">
       <form onSubmit={handleSubmit} className="register-form">
-        
+        <h1 className="register-header">Crear cuenta</h1>
         <input
-          type="nombre"
+          type="text"
           placeholder="Nombre"
-          value={email}
+          value={nombre}
           onChange={(e) => setNombre(e.target.value)}
           className="register-input"
-          />
+        />
         <input
           type="email"
           placeholder="Email"
-          value={password}
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="register-input"
         />
@@ -52,13 +68,14 @@ const Register = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
           className="register-input"
         />
-        <button type="submit" className="register-button">Registrarse</button>
+        {error && <p className="error-message">{error}</p>}
+        <button type="submit" className="register-button green">Registrarse</button>
+        <p className="login-redirect">
+          ¿Ya tienes cuenta? <button onClick={handleLoginRedirect} className="login-button">Inicia sesión aquí</button>
+        </p>
       </form>
-      <div className="register-footer">
-        <a href="/login" className="footer-link">¿Ya tienes cuenta? Inicia sesión</a>
-      </div>
     </div>
   );
-}
+};
 
 export default Register;

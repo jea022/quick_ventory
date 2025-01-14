@@ -1,7 +1,7 @@
 // src/components/ForgotPassword.js
 
 import React, { useState } from 'react';
-import { auth } from '../firestoreConfig';
+import { auth } from '../firebase';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');

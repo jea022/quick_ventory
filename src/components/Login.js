@@ -1,24 +1,33 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../firebase'; // Asegúrate de que la ruta sea correcta
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import '../styles.css'; // Cambia la ruta según la estructura correcta
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const auth = getfirestore();
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lógica de autenticación
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate('/'); // Redirige al inicio después de iniciar sesión
+    } catch (error) {
+      setError('Error al iniciar sesión. Verifica tus credenciales.');
+    }
+  };
+
+  const handleRegisterRedirect = () => {
+    navigate('/register'); // Redirige a la página de registro
   };
 
   return (
-    <div className="login-container">
-      <header className="login-header">
-        <img src="/images/logo.png" alt="Logo" className="inicio-logo" />
-        <h1>Iniciar sesión</h1>
-      </header>
+    <div className="login-page">
       <form onSubmit={handleSubmit} className="login-form">
+        <h1 className="login-header">Iniciar sesión</h1>
         <input
           type="email"
           placeholder="Email"
@@ -33,13 +42,14 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           className="login-input"
         />
-        <button type="submit" className="login-button">Iniciar sesión</button>
+        {error && <p className="error-message">{error}</p>}
+        <button type="submit" className="login-button green">Iniciar sesión</button>
+        <p className="register-redirect">
+          ¿No tienes cuenta? <button onClick={handleRegisterRedirect} className="register-button">Regístrate aquí</button>
+        </p>
       </form>
-      <div className="login-footer">
-        <a href="/register" className="footer-link">¿No tienes cuenta? Regístrate</a>
-      </div>
     </div>
   );
-}
+};
 
 export default Login;

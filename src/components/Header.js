@@ -4,7 +4,10 @@ import '../styles.css';
 const Header = () => {
   return (
     <header className="header">
-      <img src="/images/logo.png" alt="Logo" className="header-logo" />
+      <a href="/" className="header-button">Inicio</a>
+      <a href="/buscar" className="header-button">Buscar</a>
+      <a href="/notificaciones" className="header-button">Notificaciones</a>
+      <a href="/ajustes" className="header-button">Ajustes</a>
     </header>
   );
 };

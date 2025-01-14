@@ -1,7 +1,7 @@
 // src/components/SearchWidget.js
 
 import React, { useState } from 'react';
-import { db } from '../firestoreConfig';
+import { db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import '../styles.css'; // Importa el archivo CSS
 

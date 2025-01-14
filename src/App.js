@@ -19,6 +19,8 @@ import Informacion from './components/Informacion';
 import CambiarUsuario from './components/CambiarUsuario';
 import Wisr from './components/Wisr';
 import EditarInformacion from './components/EditarInformacion';
+import Header from './components/Header'; // Importa el nuevo Header
+import { useNavigate } from 'react-router-dom';
 
 function AppWrapper() {
   return (
@@ -31,31 +33,34 @@ function AppWrapper() {
 function App() {
   const location = useLocation();
 
-  const hideFooter = location.pathname === '/login' || location.pathname === '/register';
+  const hideHeader = location.pathname === '/login' || location.pathname === '/register';
 
   return (
-    <div className="app">
-      <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/searchItem" element={<SearchItem />} />
-        <Route path="/crear-espacio" element={<CrearEspacio />} />
-        <Route path="/espacio/:spaceName" element={<Espacio />} />
-        <Route path="/crear-item/:spaceName" element={<CrearItem />} />
-        <Route path="/editar-item/:spaceName/:itemName" element={<EditarItem />} />
-        <Route path="/editar-espacio/:spaceName" element={<EditarEspacio />} />
-        <Route path="/buscar" element={<Buscar />} />
-        <Route path="/ajustes" element={<Ajustes />} />
-        <Route path="/informacion" element={<Informacion />} />
-        <Route path="/cerrar-sesion" element={<CerrarSesion />} />
-        <Route path="/wisr" element={<Wisr />} />
-        <Route path="/cambiar-contraseña" element={<CambiarContraseña />} />
-        <Route path="/editar-informacion" element={<EditarInformacion />} />
-        <Route path="/cambiar-usuario" element={<CambiarUsuario />} />
-      </Routes>
-      {!hideFooter && <Footer />}
-    </div>
+    <>
+      {!hideHeader && <Header />} {/* Usa el Header en lugar del Footer */}
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<Inicio />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/searchItem" element={<SearchItem />} />
+          <Route path="/crear-espacio" element={<CrearEspacio />} />
+          <Route path="/espacio/:spaceName" element={<Espacio />} />
+          <Route path="/crear-item/:spaceName" element={<CrearItem />} />
+          <Route path="/editar-item/:spaceName/:itemName" element={<EditarItem />} />
+          <Route path="/editar-espacio/:spaceName" element={<EditarEspacio />} />
+          <Route path="/buscar" element={<Buscar />} />
+          <Route path="/ajustes" element={<Ajustes />} />
+          <Route path="/informacion" element={<Informacion />} />
+          <Route path="/cerrar-sesion" element={<CerrarSesion />} />
+          <Route path="/wisr" element={<Wisr />} />
+          <Route path="/cambiar-contraseña" element={<CambiarContraseña />} />
+          <Route path="/editar-informacion" element={<EditarInformacion />} />
+          <Route path="/cambiar-usuario" element={<CambiarUsuario />} />
+        </Routes>
+        {!hideHeader && <Footer />}
+      </div>
+    </>
   );
 }
 
