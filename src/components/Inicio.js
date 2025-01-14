@@ -1,95 +1,97 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Banner from './Banner';
+import { obtenerEspacios, eliminarEspacio } from '../services/firestore';
+import Banner from './Banner'; // Importa el componente Banner
 import '../styles.css';
 
 const Inicio = () => {
-  const [spaces, setSpaces] = useState([]);
-  const [search, setSearch] = useState('');
-  const [foundItem, setFoundItem] = useState(null);
-  const [contextMenu, setContextMenu] = useState(null);
+  const [espacios, setEspacios] = useState([]);
+  const [busqueda, setBusqueda] = useState('');
+  const [itemEncontrado, setItemEncontrado] = useState(null);
+  const [menuContextual, setMenuContextual] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedSpaces = JSON.parse(localStorage.getItem('spaces')) || [];
-    setSpaces(storedSpaces);
+    const fetchEspacios = async () => {
+      const espacios = await obtenerEspacios();
+      setEspacios(espacios);
+    };
+    fetchEspacios();
   }, []);
 
-  const handleSpaceClick = (spaceName) => {
-    navigate(`/espacio/${spaceName}`);
+  const manejarClickEspacio = (nombreEspacio) => {
+    navigate(`/espacio/${nombreEspacio}`);
   };
 
-  const handleCreateSpace = () => {
+  const manejarCrearEspacio = () => {
     navigate('/crear-espacio');
   };
 
-  const handleSearch = () => {
-    let itemFound = null;
-    spaces.forEach(space => {
-      if (space.items) {
-        space.items.forEach(item => {
-          if (item.name.toLowerCase().includes(search.toLowerCase())) {
-            itemFound = { name: item.name, space: space.name };
+  const manejarBusqueda = () => {
+    let itemEncontrado = null;
+    espacios.forEach(espacio => {
+      if (espacio.items) {
+        espacio.items.forEach(item => {
+          if (item.name.toLowerCase().includes(busqueda.toLowerCase())) {
+            itemEncontrado = { name: item.name, space: espacio.name };
           }
         });
       }
     });
-    setFoundItem(itemFound);
+    setItemEncontrado(itemEncontrado);
   };
 
-  const handleClearSearch = () => {
-    setSearch('');
-    setFoundItem(null);
+  const manejarLimpiarBusqueda = () => {
+    setBusqueda('');
+    setItemEncontrado(null);
   };
 
-  const showContextMenu = (event, space) => {
+  const mostrarMenuContextual = (event, espacio) => {
     event.preventDefault();
-    setContextMenu({
+    setMenuContextual({
       x: event.clientX,
       y: event.clientY,
-      space,
+      espacio,
     });
   };
 
-  const hideContextMenu = () => {
-    setContextMenu(null);
+  const ocultarMenuContextual = () => {
+    setMenuContextual(null);
   };
 
-  const handleEditSpace = (space) => {
-    navigate(`/editar-espacio/${space.name}`, { state: { space } });
-    hideContextMenu();
+  const manejarEditarEspacio = (espacio) => {
+    navigate(`/editar-espacio/${espacio.name}`, { state: { espacio } });
+    ocultarMenuContextual();
   };
 
-  const handleDeleteSpace = (spaceName) => {
-    const updatedSpaces = spaces.filter(space => space.name !== spaceName);
-    setSpaces(updatedSpaces);
-    localStorage.setItem('spaces', JSON.stringify(updatedSpaces));
-    hideContextMenu();
+  const manejarEliminarEspacio = async (idEspacio) => {
+    await eliminarEspacio(idEspacio);
+    setEspacios(espacios.filter(espacio => espacio.id !== idEspacio));
+    ocultarMenuContextual();
   };
 
   return (
     <div className="inicio-page">
       <header className="inicio-header">
-        <Banner />
+        <Banner /> {/* Usa el componente Banner */}
       </header>
-
       <div className="search-widget">
         <div className="search-container-widget">
           <input
             type="text"
             placeholder="Buscar Item..."
             className="search-input"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
           />
           <div className="search-buttons">
-            <button className="search-button" onClick={handleSearch}>Buscar</button>
-            <button className="clear-button" onClick={handleClearSearch}>Limpiar</button>
+            <button className="search-button" onClick={manejarBusqueda}>Buscar</button>
+            <button className="clear-button" onClick={manejarLimpiarBusqueda}>Limpiar</button>
           </div>
-          {foundItem && (
+          {itemEncontrado && (
             <div className="search-result">
-              <p>Objeto encontrado: <strong>{foundItem.name}</strong></p>
-              <p>Ubicación: <strong>{foundItem.space}</strong></p>
+              <p>Objeto encontrado: <strong>{itemEncontrado.name}</strong></p>
+              <p>Ubicación: <strong>{itemEncontrado.space}</strong></p>
             </div>
           )}
         </div>
@@ -97,17 +99,17 @@ const Inicio = () => {
 
       <div className="inicio-create-space">
         <div className="create-space-container">
-          <button className="create-space-button" onClick={handleCreateSpace}>Crear Nuevo Espacio</button>
+          <button className="create-space-button" onClick={manejarCrearEspacio}>Crear Nuevo Espacio</button>
           <div className="categories-container">
-            {spaces.length > 0 ? (
-              spaces.map((space, index) => (
+            {espacios.length > 0 ? (
+              espacios.map((espacio, index) => (
                 <div
                   key={index}
                   className="category-button"
-                  onClick={() => handleSpaceClick(space.name)}
-                  onContextMenu={(e) => showContextMenu(e, space)}
+                  onClick={() => manejarClickEspacio(espacio.name)}
+                  onContextMenu={(e) => mostrarMenuContextual(e, espacio)}
                 >
-                  {space.name}
+                  {espacio.name}
                 </div>
               ))
             ) : (
@@ -117,13 +119,13 @@ const Inicio = () => {
         </div>
       </div>
 
-      {contextMenu && (
+      {menuContextual && (
         <div
           className="context-menu"
-          style={{ top: `${contextMenu.y}px`, left: `${contextMenu.x}px` }}
+          style={{ top: `${menuContextual.y}px`, left: `${menuContextual.x}px` }}
         >
-          <button onClick={() => handleEditSpace(contextMenu.space)}>Editar</button>
-          <button onClick={() => handleDeleteSpace(contextMenu.space.name)}>Eliminar</button>
+          <button onClick={() => manejarEditarEspacio(menuContextual.espacio)}>Editar</button>
+          <button onClick={() => manejarEliminarEspacio(menuContextual.espacio.id)}>Eliminar</button>
         </div>
       )}
     </div>

@@ -4,8 +4,6 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Inicio from './components/Inicio';
 import SearchItem from './components/SearchItems';
-import Footer from './components/Footer';
-import './styles.css';
 import CrearEspacio from './components/CrearEspacio';
 import Espacio from './components/Espacio';
 import CrearItem from './components/CrearItem';
@@ -19,8 +17,8 @@ import Informacion from './components/Informacion';
 import CambiarUsuario from './components/CambiarUsuario';
 import Wisr from './components/Wisr';
 import EditarInformacion from './components/EditarInformacion';
-import Header from './components/Header'; // Importa el nuevo Header
-import { useNavigate } from 'react-router-dom';
+import Navbar from './components/Navbar'; // Importa el nuevo Navbar
+import './styles.css';
 
 function AppWrapper() {
   return (
@@ -33,11 +31,11 @@ function AppWrapper() {
 function App() {
   const location = useLocation();
 
-  const hideHeader = location.pathname === '/login' || location.pathname === '/register';
+  const hideNavbar = location.pathname === '/login' || location.pathname === '/register';
 
   return (
     <>
-      {!hideHeader && <Header />} {/* Usa el Header en lugar del Footer */}
+      {!hideNavbar && <Navbar />} {/* Usa el Navbar en lugar del Footer */}
       <div className="app">
         <Routes>
           <Route path="/" element={<Inicio />} />
@@ -58,7 +56,6 @@ function App() {
           <Route path="/editar-informacion" element={<EditarInformacion />} />
           <Route path="/cambiar-usuario" element={<CambiarUsuario />} />
         </Routes>
-        {!hideHeader && <Footer />}
       </div>
     </>
   );

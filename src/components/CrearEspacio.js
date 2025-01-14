@@ -1,59 +1,59 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { agregarEspacio } from '../services/firestore';
 import '../styles.css';
 
 const CrearEspacio = () => {
-  const [name, setName] = useState('');
-  const [location, setLocation] = useState('');
-  const [description, setDescription] = useState('');
-  const [photo, setPhoto] = useState(null);
+  const [nombre, setNombre] = useState('');
+  const [ubicacion, setUbicacion] = useState('');
+  const [descripcion, setDescripcion] = useState('');
   const navigate = useNavigate();
 
-  const handleCreate = () => {
-    if (!name) {
+  const manejarCrear = async () => {
+    if (!nombre) {
       alert('El nombre es obligatorio');
       return;
     }
 
-    // Guardar el espacio en localStorage
-    const newSpace = { name, location, description, photo };
-    const storedSpaces = JSON.parse(localStorage.getItem('spaces')) || [];
-    storedSpaces.push(newSpace);
-    localStorage.setItem('spaces', JSON.stringify(storedSpaces));
-
-    alert('Espacio creado');
-    navigate('/'); // Redirige al inicio después de crear el espacio
+    // Guardar el espacio en Firestore
+    const nuevoEspacio = { name: nombre, location: ubicacion, description: descripcion };
+    try {
+      await agregarEspacio(nuevoEspacio);
+      alert('Espacio creado');
+      navigate('/'); // Redirige al inicio después de crear el espacio
+    } catch (error) {
+      console.error('Error al crear el espacio:', error);
+      alert('Hubo un error al crear el espacio. Por favor, inténtalo de nuevo.');
+    }
   };
 
   return (
     <div className="fullscreen-container">
-      <h3 className="section-title">Mis espacios</h3>
+      <h3 className="section-title">Crear Nuevo Espacio</h3>
       <div className="create-space-container">
-        <h2>Creador de Espacios</h2>
         <form onSubmit={(e) => e.preventDefault()}>
           <input
             type="text"
             placeholder="Nombre del Espacio"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            className="create-space-input"
+            required
           />
           <input
             type="text"
             placeholder="Ubicación"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
+            value={ubicacion}
+            onChange={(e) => setUbicacion(e.target.value)}
+            className="create-space-input"
           />
           <textarea
             placeholder="Descripción"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={descripcion}
+            onChange={(e) => setDescripcion(e.target.value)}
+            className="create-space-input"
           />
-          <input
-            type="file"
-            onChange={(e) => setPhoto(e.target.files[0])}
-            style={{ fontSize: '1.2em' }} // Aumenta el tamaño del input de archivo
-          />
-          <button type="button" className="create-space-button" onClick={handleCreate}>
+          <button type="button" className="create-space-button" onClick={manejarCrear}>
             Crear Espacio
           </button>
         </form>

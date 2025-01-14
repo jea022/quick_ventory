@@ -4,544 +4,501 @@ body {
   background-color: #444; /* Fondo oscuro */
   margin: 0;
   padding: 0;
-  color: #f4f4f9; /* Texto claro para mejor legibilidad */
-  display: flex;
-  flex-direction: column;
-  min-height: 50vh;
+color: #f4f4f9; /* Texto claro para mejor legibilidad */
+flex-direction: column;
+min-height: 50vh;
 }
 
-.app {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  max-width: 30000px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #444; /* Fondo oscuro para el contenedor principal */
-  color: #f4f4f9; /* Texto claro para contraste */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para darle profundidad */
-  border-radius: 8px; /* Bordes redondeados para un look más suave */
-  box-sizing: border-box;
-}
+
 
 /* Fullscreen Container */
 .fullscreen-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #444; /* Fondo consistente */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+background-color: #444; /* Fondo consistente */
 }
 
 /* Header */
 .header {
-  text-align: center;
-  padding: 20px;
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 8px;
-  margin-bottom: 20px;
+text-align: center;
+padding: 20px;
+background-color: #4CAF50;
+color: white;
+border-radius: 8px;
+margin-bottom: 20px;
 }
 
 .header-logo {
-  width: 100px;
-  height: auto;
-  margin-top: 10px;
+width: 100px;
+height: auto;
+margin-top: 10px;
 }
 
 /* Navbar */
 .navbar {
-  background-color: #444;
-  padding: 10px;
-  text-align: center;
-  color: white;
-  border-radius: 8px;
-  margin-bottom: 20px;
+background-color: #000000;
+padding: 10px;
+text-align: center;
+color: #4CAF50;
+border-radius: 0px;
+margin-bottom: 20px;
 }
 
-/* Footer */
-.footer {
-  background-color: #444;
-  padding: 10px;
-  text-align: center;
-  color: white;
-  display: flex;
-  justify-content: space-around;
-  border-radius: 8px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  left: 0;
-}
 
-.footer-button {
-  text-decoration: none;
-  color: white;
-  padding: 10px;
-  border-radius: 4px;
-  background-color: #4CAF50;
-}
-
-.footer-button:hover {
-  background-color: #45a049;
-}
 
 /* Search Widget */
 .search-widget {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+display: flex;
+justify-content: center;
+margin-bottom: 20px;
 }
 
 .search-container-widget {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px; /* Aumenta el padding */
-  border: 10px solid #757474;
-  border-radius: 8px;
-  background-color: #444; /* Fondo oscuro */
-  width: 350px; /* Aumenta el ancho del widget */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 40px; /* Aumenta el padding */
+border: 10px solid #757474;
+border-radius: 8px;
+background-color: #444; /* Fondo oscuro */
+width: 350px; /* Aumenta el ancho del widget */
 }
 
 .search-input {
-  width: 100%;
-  padding: 15px; /* Aumenta el padding */
-  margin-bottom: 15px; /* Aumenta el margen inferior */
-  border-radius: 4px;
-  border: 1px solid #555;
-  background-color: #555; /* Fondo oscuro */
-  color: #ffffff; /* Texto claro */
+width: 100%;
+padding: 15px; /* Aumenta el padding */
+margin-bottom: 15px; /* Aumenta el margen inferior */
+border-radius: 4px;
+border: 1px solid #555;
+background-color: #555; /* Fondo oscuro */
+color: #ffffff; /* Texto claro */
 }
 
 .search-buttons {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+display: flex;
+justify-content: space-between;
+width: 100%;
 }
 
 .search-button, .clear-button, .create-space-button {
-  width: 48%; /* Ajusta el ancho de los botones */
-  padding: 15px; /* Aumenta el padding */
-  font-size: 16px; /* Aumenta el tamaño de la fuente */
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
+width: 48%; /* Ajusta el ancho de los botones */
+padding: 15px; /* Aumenta el padding */
+font-size: 16px; /* Aumenta el tamaño de la fuente */
+border-radius: 4px;
+border: none;
+cursor: pointer;
 }
 
 .search-button {
-  background-color: #4CAF50;
-  color: white;
+background-color: #4CAF50;
+color: white;
 }
 
 .search-button:hover {
-  background-color: #45a049;
+background-color: #45a049;
 }
 
 .clear-button {
-  background-color: #f44336;
-  color: white;
+background-color: #f44336;
+color: white;
 }
 
 .clear-button:hover {
-  background-color: #e53935;
+background-color: #e53935;
 }
 
 .search-result {
-  margin-top: 10px;
-  color: #f4f4f9; /* Texto claro */
+margin-top: 10px;
+color: #f4f4f9; /* Texto claro */
 }
 
 /* Inventory List */
 .inventory-list {
-  padding: 20px;
-  border: 1px solid #555;
-  border-radius: 8px;
-  background-color: #444; /* Fondo oscuro */
-  margin-bottom: 20px;
+padding: 20px;
+border: 1px solid #555;
+border-radius: 8px;
+background-color: #444; /* Fondo oscuro */
+margin-bottom: 20px;
 }
 
 .inventory-list ul {
-  list-style: none;
-  padding: 0;
+list-style: none;
+padding: 0;
 }
 
 .inventory-list li {
-  padding: 10px;
-  border-bottom: 1px solid #555;
-  color: #f4f4f9; /* Texto claro */
+padding: 10px;
+border-bottom: 1px solid #555;
+color: #f4f4f9; /* Texto claro */
 }
 
 /* Notifications */
 .notifications {
-  padding: 20px;
-  border: 1px solid #555;
-  border-radius: 8px;
-  background-color: #444; /* Fondo oscuro */
-  margin-bottom: 20px;
-  color: #f4f4f9; /* Texto claro */
+padding: 20px;
+border: 1px solid #555;
+border-radius: 8px;
+background-color: #444; /* Fondo oscuro */
+margin-bottom: 20px;
+color: #f4f4f9; /* Texto claro */
 }
 
 /* Settings */
 .settings {
-  padding: 20px;
-  border: 1px solid #555;
-  border-radius: 8px;
-  background-color: #444; /* Fondo oscuro */
-  margin-bottom: 20px;
-  color: #f4f4f9; /* Texto claro */
+padding: 20px;
+border: 1px solid #555;
+border-radius: 8px;
+background-color: #444; /* Fondo oscuro */
+margin-bottom: 20px;
+color: #f4f4f9; /* Texto claro */
 }
 
 /* Inicio */
 .inicio-container {
-  padding: 20px;
-  background-color: #444; /* Fondo consistente */
-  border-radius: 8px;
-  margin-bottom: 20px;
-  color: #f4f4f9; /* Texto claro */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra los contenedores horizontalmente */
+padding: 20px;
+background-color: #444; /* Fondo consistente */
+border-radius: 8px;
+margin-bottom: 20px;
+color: #f4f4f9; /* Texto claro */
+display: flex;
+flex-direction: column;
+align-items: center; /* Centra los contenedores horizontalmente */
 }
 
-.inicio-header {
-  text-align: center;
-  margin-bottom: 20px;
-  margin-top: 60px; /* Añade margen superior para aumentar el espacio */
-}
+
 
 .inicio-logo {
-  width: 100px;
-  height: auto;
-  display: block;
-  margin: 0 auto 20px;
+width: 100px;
+height: auto;
+display: block;
+margin: 0 auto 20px;
 }
 
 .inicio-title {
-  font-size: 2rem;
-  color: #4CAF50;
+font-size: 2rem;
+color: #4CAF50;
 }
 
 .inicio-search {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-  width: 350px; /* Aumenta el ancho del contenedor */
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-bottom: 20px;
+width: 350px; /* Aumenta el ancho del contenedor */
 }
 
 .search-result {
-  margin-bottom: 20px;
+margin-bottom: 20px;
 }
 
 .inicio-create-space {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+display: flex;
+justify-content: center;
+margin-bottom: 20px;
 }
 
 .create-space-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px; /* Aumenta el padding */
-  border: 1px solid #555;
-  border-radius: 8px;
-  background-color: #444; /* Fondo oscuro */
-  width: 800px; /* Aumenta el ancho del contenedor */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 40px; /* Aumenta el padding */
+border: 1px solid #555;
+border-radius: 8px;
+background-color: #444; /* Fondo oscuro */
+width: 800px; /* Aumenta el ancho del contenedor */
 }
 
 .create-space-button {
-  margin-top: 20px; /* Añade margen superior al botón */
-  width: 100%; /* Asegura que el botón ocupe todo el ancho del contenedor */
+margin-top: 20px; /* Añade margen superior al botón */
+width: 100%; /* Asegura que el botón ocupe todo el ancho del contenedor */
 }
 
 .inicio-categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+justify-content: center;
 }
 
 .categories-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+justify-content: center;
 }
 .category-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 20px; /* Aumenta el padding para hacer los botones más grandes */
-  font-size: 18px; /* Aumenta el tamaño de la fuente */
-  border-radius: 8px;
-  cursor: pointer;
-  text-align: center;
-  flex: 1 1 calc(33.333% - 20px);
-  box-sizing: border-box;
-  margin: 10px; /* Añade margen para aumentar el espacio entre botones */
-  transition: background-color 0.3s ease;
+background-color: #4CAF50;
+color: white;
+padding: 20px; /* Aumenta el padding para hacer los botones más grandes */
+font-size: 18px; /* Aumenta el tamaño de la fuente */
+border-radius: 8px;
+cursor: pointer;
+text-align: center;
+flex: 1 1 calc(33.333% - 20px);
+box-sizing: border-box;
+margin: 10px; /* Añade margen para aumentar el espacio entre botones */
+transition: background-color 0.3s ease;
 }
 
 .category-button:hover {
-  background-color: #45a049;
+background-color: #45a049;
 }
 
 .context-menu {
-  position: absolute;
-  background-color: #444; /* Fondo oscuro */
-  border: 1px solid #555;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+position: absolute;
+background-color: #444; /* Fondo oscuro */
+border: 1px solid #555;
+border-radius: 8px;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+z-index: 1000;
 }
 
 .context-menu button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  text-align: left;
-  color: #f4f4f9; /* Texto claro */
+display: block;
+width: 100%;
+padding: 10px;
+border: none;
+background: none;
+cursor: pointer;
+text-align: left;
+color: #f4f4f9; /* Texto claro */
 }
 
 .context-menu button:hover {
-  background-color: #555; /* Fondo oscuro */
+background-color: #555; /* Fondo oscuro */
 }
 
 /* Banner Logo */
 .banner-logo {
-  position: absolute;
-  bottom: -50px; /* Ajusta esta propiedad para que la mitad del logo esté dentro del banner */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: auto;
+position: absolute;
+bottom: -50px; /* Ajusta esta propiedad para que la mitad del logo esté dentro del banner */
+left: 50%;
+transform: translateX(-50%);
+width: 100px;
+height: auto;
 }
 
 /* Forms */
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+display: flex;
+flex-direction: column;
+gap: 10px;
 }
 
 input[type="text"], input[type="password"], input[type="email"], input[type="file"], select, textarea {
-  padding: 15px; /* Aumenta el padding */
-  border-radius: 4px;
-  border: 1px solid #555;
-  width: 100%;
-  margin-bottom: 15px; /* Aumenta el margen inferior */
-  background-color: #555; /* Fondo oscuro */
-  color: #f4f4f9; /* Texto claro */
+padding: 15px; /* Aumenta el padding */
+border-radius: 4px;
+border: 1px solid #555;
+width: 100%;
+margin-bottom: 15px; /* Aumenta el margen inferior */
+background-color: #555; /* Fondo oscuro */
+color: #f4f4f9; /* Texto claro */
 }
 
 button {
-  padding: 15px; /* Aumenta el padding */
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px; /* Aumenta el tamaño de la fuente */
+padding: 15px; /* Aumenta el padding */
+border-radius: 4px;
+border: none;
+cursor: pointer;
+font-size: 16px; /* Aumenta el tamaño de la fuente */
 }
 
 button.green {
-  background-color: #4CAF50;
-  color: white;
+background-color: #4CAF50;
+color: white;
 }
 
 button.green:hover {
-  background-color: #45a049;
+background-color: #45a049;
 }
 
 button.secondary {
-  background-color: #f44336;
-  color: white;
+background-color: #f44336;
+color: white;
 }
 
 button.secondary:hover {
-  background-color: #e53935;
+background-color: #e53935;
 }
 
 /* Ajustes */
 .ajustes-container {
-  padding: 40px; /* Aumenta el padding */
-  border: 1px solid #555;
-  border-radius: 8px;
-  background-color: #444; /* Fondo oscuro */
-  width: 350px; /* Aumenta el ancho del contenedor */
-  margin: 0 auto; /* Centra el contenedor */
+padding: 40px; /* Aumenta el padding */
+border: 1px solid #555;
+border-radius: 8px;
+background-color: #444; /* Fondo oscuro */
+width: 350px; /* Aumenta el ancho del contenedor */
+margin: 0 auto; /* Centra el contenedor */
 }
 
 .profile-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-bottom: 20px;
 }
 
 .ajustes-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+display: flex;
+flex-direction: column;
+gap: 10px;
 }
 
 .ajuste-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 15px; /* Aumenta el padding */
-  border-radius: 4px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px; /* Aumenta el tamaño de la fuente */
+background-color: #4CAF50;
+color: white;
+padding: 15px; /* Aumenta el padding */
+border-radius: 4px;
+text-align: center;
+text-decoration: none;
+font-size: 16px; /* Aumenta el tamaño de la fuente */
 }
 
 .ajuste-button:hover {
-  background-color: #45a049;
+background-color: #45a049;
 }
 
-/* General Styles */
-body {
-  margin: 0;
-  color: #f4f4f9; /* Texto claro */
-}
+
 
 /* Login and Register Forms */
 .login-page, .register-page {
-  display: flex;
-  overflow: hidden; /* Evita el scroll */
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: url('/public/banner.png') no-repeat center center fixed; /* Fondo con banner */
-  background-size: cover;
+display: flex;
+overflow: hidden; /* Evita el scroll */
+flex-direction: column;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+background: url('/public/banner.png') no-repeat center center fixed; /* Fondo con banner */
+background-size: cover;
 }
 
 .login-form-container, .register-form-container {
-  display: flex;
-  justify-content: center; /* Centra los formularios horizontalmente */
-  align-items: center;
+display: flex;
+justify-content: center; /* Centra los formularios horizontalmente */
+align-items: center;
 }
 
 .login-header, .register-header {
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 2em;
-  color: #fff; /* Texto blanco */
+text-align: center;
+margin-bottom: 10px;
+font-size: 2em;
+color: #fff; /* Texto blanco */
 }
 
 .login-input, .register-input {
-  padding: 10px;
-  margin: 10px 0;
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid #555;
-  background-color: #555; /* Fondo oscuro */
-  color: #f4f4f9; /* Texto claro */
+padding: 10px;
+margin: 10px 0;
+width: 100%;
+border-radius: 8px;
+border: 1px solid #555;
+background-color: #555; /* Fondo oscuro */
+color: #f4f4f9; /* Texto claro */
 }
 
 .login-button, .register-button {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 8px;
-  padding: 10px;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+width: 100%;
+background-color: #4CAF50;
+color: white;
+border-radius: 8px;
+padding: 10px;
+font-size: 14px;
+border: none;
+cursor: pointer;
+transition: background-color 0.3s ease;
 }
 
 .login-button:hover, .register-button:hover {
-  background-color: #45a049;
+background-color: #45a049;
 }
 
 .login-form, .register-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border: 4px solid #000000;
-  border-radius: 8px;
-  background-color: #000000;
-  width: 280px; /* Ajusta el ancho del formulario */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 20px;
+border: 4px solid #000000;
+border-radius: 8px;
+background-color: #000000;
+width: 280px; /* Ajusta el ancho del formulario */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .login-form input, .register-form input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  border: 1px solid #555;
-  background-color: #555; /* Fondo oscuro */
-  color: #f4f4f9; /* Texto claro */
+width: 100%;
+padding: 10px;
+margin-bottom: 10px;
+border-radius: 4px;
+border: 1px solid #555;
+background-color: #555; /* Fondo oscuro */
+color: #f4f4f9; /* Texto claro */
 }
 
 .login-form button, .register-form button {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
+width: 100%;
+padding: 10px;
+font-size: 14px;
+border-radius: 4px;
+border: none;
+cursor: pointer;
 }
 
 .error-message {
-  color: #f44336;
-  margin-top: 10px;
+color: #f44336;
+margin-top: 10px;
 }
 
 .register-redirect, .login-redirect {
-  margin-top: 20px;
-  text-align: center;
-  color: #f4f4f9; /* Texto claro */
+margin-top: 20px;
+text-align: center;
+color: #f4f4f9; /* Texto claro */
 }
 
 .register-button, .login-button {
-  background: none;
-  border: none;
-  color: #4CAF50;
-  cursor: pointer;
-  text-decoration: underline;
-  font-size: 1em;
+background: none;
+border: none;
+color: #4CAF50;
+cursor: pointer;
+text-decoration: underline;
+font-size: 1em;
 }
 
 .register-button:hover, .login-button:hover {
-  color: #1d1d1d;
+color: #1d1d1d;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .inicio-search {
-    flex-direction: column;
-  }
+.inicio-search {
+  flex-direction: column;
+}
 
-  .login-page, .register-page {
-    flex-direction: column;
-  }
+.login-page, .register-page {
+  flex-direction: column;
+}
 }
 /* Responsive Design */
 @media (max-width: 768px) {
-  .inicio-search {
-    flex-direction: column;
-  }
+.inicio-search {
+  flex-direction: column;
+}
 
-  .search-button, .clear-button, .create-space-button {
-    width: 100%;
-  }
+.search-button, .clear-button, .create-space-button {
+  width: 100%;
+}
 
-  .category-button {
-    flex: 1 1 100%;
-  }
+.category-button {
+  flex: 1 1 100%;
+}
 }
 
 .section-title {
-  font-size: 1.5em;
-  color: #f4f4f9; /* Texto claro */
-  margin-bottom: 20px;
-  text-align: center;
+font-size: 1.5em;
+color: #f4f4f9; /* Texto claro */
+margin-bottom: 20px;
+text-align: center;
 }
+
+
+

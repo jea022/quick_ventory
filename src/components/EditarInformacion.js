@@ -22,7 +22,7 @@ const EditarInformacion = () => {
     <div className="editar-container">
       <h1>Editar Información del Usuario</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label>Nombre:</label>
           <input
             type="text"
@@ -30,7 +30,7 @@ const EditarInformacion = () => {
             onChange={(e) => setNombre(e.target.value)}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Email:</label>
           <input
             type="email"
@@ -38,7 +38,7 @@ const EditarInformacion = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Preferencias:</label>
           <input
             type="text"
@@ -46,7 +46,7 @@ const EditarInformacion = () => {
             onChange={(e) => setPreferencias(e.target.value)}
           />
         </div>
-        <button type="submit">Guardar Cambios</button>
+        <button type="submit" className="save-button">Guardar Cambios</button>
       </form>
     </div>
   );
