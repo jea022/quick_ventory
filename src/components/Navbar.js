@@ -3,24 +3,22 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  InputBase,
   IconButton,
   Badge,
   Link,
-  Menu,
-  MenuItem,
+  Box,
+  Avatar,
 } from "@mui/material";
-import { Search, ShoppingCart, Menu as MenuIcon } from "@mui/icons-material";
+import { Home, Search, Settings, ShoppingCart, AccountCircle } from "@mui/icons-material";
 import { getAuth, signOut } from "firebase/auth";
 import { getFirestore, doc, getDoc, onSnapshot } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import UserMenu from "./UserMenu"; // Asegúrate de que la ruta sea correcta
+import "../styles.css"; // Importa los estilos globales
 
 const Navbar = () => {
-  const [isSeller, setIsSeller] = useState(false);
   const [user, setUser] = useState(null);
   const [cartCount, setCartCount] = useState(0);
-  const [anchorEl, setAnchorEl] = useState(null);
 
   const auth = getAuth();
   const db = getFirestore();
@@ -30,15 +28,11 @@ const Navbar = () => {
   useEffect(() => {
     const unsubscribeAuth = auth.onAuthStateChanged((currentUser) => {
       setUser(currentUser);
-      setIsSeller(false);
 
       if (currentUser) {
         const userRef = doc(db, "userProfiles", currentUser.uid);
         getDoc(userRef)
           .then((userDoc) => {
-            if (userDoc.exists() && userDoc.data().role === "seller") {
-              setIsSeller(true);
-            }
             if (userDoc.exists()) {
               setUser({ ...currentUser, ...userDoc.data() });
             }
@@ -69,92 +63,30 @@ const Navbar = () => {
   const handleSignOut = async () => {
     await signOut(auth);
     setUser(null);
-    setIsSeller(false);
     navigate("/");
-  };
-
-  const handleMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleNavigate = (path) => {
-    navigate(path);
-    handleMenuClose();
   };
 
   return (
     <AppBar position="fixed" style={{ backgroundColor: "#232f3e" }}>
       <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
-        {/* Logo y Menú */}
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuOpen}>
-            <MenuIcon />
+        {/* Logo y Nombre */}
+        <Box display="flex" alignItems="center">
+          <Link href="/" style={{ display: "flex", alignItems: "center" }}>
+            <Avatar src="/images/logo.png" alt="QuickVentory" style={{ marginRight: 10 }} />
+            <Typography variant="h6" style={{ fontWeight: "bold", color: "white" }}>
+              QuickVentory
+            </Typography>
+          </Link>
+        </Box>
+
+        {/* Botones de navegación */}
+        <Box display="flex" alignItems="center" gap="15px">
+          <IconButton color="inherit" onClick={() => navigate("/")}>
+            <Home />
           </IconButton>
-          <Typography variant="h6" style={{ fontWeight: "bold" }}>
-            <Link
-              href="/"
-              style={{
-                color: "white",
-                textDecoration: "none",
-                fontWeight: "bold",
-              }}
-            >
-              Tecnoworld
-            </Link>
-          </Typography>
-        </div>
-
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleMenuClose}
-        >
-          <MenuItem onClick={() => handleNavigate("/")}>Inicio</MenuItem>
-          <MenuItem onClick={() => handleNavigate("/order-history")}>
-            Historial de Pedidos
-          </MenuItem>
-        </Menu>
-
-        {/* Barra de búsqueda */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            backgroundColor: "#fff",
-            borderRadius: "5px",
-            padding: "0 10px",
-            width: "40%",
-          }}
-        >
-          <Search style={{ color: "#888" }} />
-          <InputBase
-            placeholder="Buscar productos"
-            style={{
-              marginLeft: "10px",
-              flex: 1,
-              fontSize: "14px",
-            }}
-          />
-        </div>
-
-        {/* Controles de usuario */}
-        <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-          {isSeller && (
-            <Link
-              href="/admin-dashboard"
-              style={{
-                color: "white",
-                textDecoration: "none",
-                fontWeight: "bold",
-              }}
-            >
-              Panel de Vendedor
-            </Link>
-          )}
+          <IconButton color="inherit" onClick={() => navigate("/search")}>
+            <Search />
+          </IconButton>
           {/* Ícono del carrito con contador */}
           <IconButton color="inherit" onClick={() => navigate("/cart")}>
             <Badge
@@ -174,7 +106,7 @@ const Navbar = () => {
           </IconButton>
           {/* Menú de usuario */}
           <UserMenu user={user} onSignOut={handleSignOut} />
-        </div>
+        </Box>
       </Toolbar>
     </AppBar>
   );

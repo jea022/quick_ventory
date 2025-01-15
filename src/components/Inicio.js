@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { obtenerEspacios, eliminarEspacio } from '../services/firestore';
-import Banner from './Banner'; // Importa el componente Banner
 import '../styles.css';
 
 const Inicio = () => {
@@ -73,10 +72,11 @@ const Inicio = () => {
   return (
     <div className="inicio-page">
       <header className="inicio-header">
-        <Banner /> {/* Usa el componente Banner */}
+        <h3 className="inicio-title">Bienvenido a QuickVentory!</h3>
       </header>
       <div className="search-widget">
         <div className="search-container-widget">
+          <img src="/images/logo.png" alt="Logo" className="header-logo" />
           <input
             type="text"
             placeholder="Buscar Item..."
