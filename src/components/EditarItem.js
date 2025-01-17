@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { useNavigate, useParams } from 'react-router-dom';
 import '../styles.css';
 
 const EditarItem = () => {
   const { spaceName, itemName } = useParams(); // Obtenemos el nombre del espacio y del item
+=======
+import { useParams, useNavigate } from 'react-router-dom';
+import { CContainer, CRow, CCol, CForm, CFormInput, CButton } from '@coreui/react';
+
+const EditarItem = () => {
+  const { spaceName, itemName } = useParams();
+>>>>>>> ed5b7cc (Prueba)
   const [name, setName] = useState('');
   const [unit, setUnit] = useState('');
   const [description, setDescription] = useState('');
@@ -11,6 +19,7 @@ const EditarItem = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+<<<<<<< HEAD
     const storedSpaces = JSON.parse(localStorage.getItem('spaces')) || [];
     const space = storedSpaces.find(space => space.name === spaceName);
     if (space) {
@@ -81,3 +90,49 @@ const EditarItem = () => {
 };
 
 export default EditarItem;
+=======
+    // Lógica para obtener los detalles del item
+  }, [spaceName, itemName]);
+
+  const handleSave = () => {
+    // Lógica para guardar los cambios
+  };
+
+  return (
+    <CContainer>
+      <CRow>
+        <CCol>
+          <h1>Editar Item</h1>
+          <CForm>
+            <CFormInput
+              type="text"
+              placeholder="Nombre"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <CFormInput
+              type="text"
+              placeholder="Unidad"
+              value={unit}
+              onChange={(e) => setUnit(e.target.value)}
+            />
+            <CFormInput
+              type="text"
+              placeholder="Descripción"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <CFormInput
+              type="file"
+              onChange={(e) => setPhoto(e.target.files[0])}
+            />
+            <CButton color="primary" onClick={handleSave}>Guardar</CButton>
+          </CForm>
+        </CCol>
+      </CRow>
+    </CContainer>
+  );
+};
+
+export default EditarItem;
+>>>>>>> ed5b7cc (Prueba)

@@ -1,0 +1,20 @@
+@import 'variables';
+@import 'custom';
+@import 'theme';
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: $dark-color;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $light-color;
+    color: $primary-color;
+  }
+
+  &.active {
+    background-color: $primary-color;
+    color: $light-color;
+  }
+}
