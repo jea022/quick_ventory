@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import '../scss/style.scss';
+import '../scss/_login-register.scss';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate('/'); // Redirige al inicio después de iniciar sesión
+      navigate('/inicio'); // Redirige a /inicio después de iniciar sesión
     } catch (error) {
       setError('Error al iniciar sesión. Verifica tus credenciales.');
     }
@@ -43,9 +43,9 @@ const Login = () => {
           className="login-input"
         />
         {error && <p className="error-message">{error}</p>}
-        <button type="submit" className="login-button green">Iniciar sesión</button>
+        <button type="submit" className="login-button">Iniciar sesión</button>
         <p className="register-redirect">
-          ¿No tienes cuenta? <button onClick={handleRegisterRedirect} className="register-button">Regístrate aquí</button>
+          ¿No tienes cuenta? <button type="button" onClick={handleRegisterRedirect} className="register-button">Regístrate aquí</button>
         </p>
       </form>
     </div>

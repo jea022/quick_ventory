@@ -1,39 +1,17 @@
-import React, { useState } from 'react';
-import { CContainer, CRow, CCol, CFormInput, CButton, CListGroup, CListGroupItem } from '@coreui/react';
-import { obtenerItemsPorNombre } from '../services/firestore';
+import React from 'react';
+import { Search } from '@mui/icons-material';
+import '../scss/_main.scss';
 
 const SearchWidget = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [results, setResults] = useState([]);
-
-  const handleSearch = async () => {
-    const items = await obtenerItemsPorNombre(searchTerm);
-    setResults(items);
-  };
-
   return (
-    <CContainer>
-      <CRow>
-        <CCol>
-          <h2>Buscar Ítems</h2>
-          <div className="search-container-widget">
-            <CFormInput
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Buscar por nombre"
-              className="search-input"
-            />
-            <CButton color="primary" onClick={handleSearch}>Buscar</CButton>
-          </div>
-          <CListGroup>
-            {results.map((item, index) => (
-              <CListGroupItem key={index}>{item.nombre}</CListGroupItem>
-            ))}
-          </CListGroup>
-        </CCol>
-      </CRow>
-    </CContainer>
+    <div className="search-bar">
+      <Search className="search-icon" />
+      <input
+        type="text"
+        placeholder="Buscar productos"
+        className="search-input"
+      />
+    </div>
   );
 };
 

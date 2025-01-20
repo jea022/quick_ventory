@@ -11,7 +11,6 @@ const Inicio = () => {
   const [busqueda, setBusqueda] = useState('');
   const [itemEncontrado, setItemEncontrado] = useState(null);
   const [menuContextual, setMenuContextual] = useState(null);
-  // const [modalVisible, setModalVisible] = useState(false); // Variable no utilizada
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -74,12 +73,14 @@ const Inicio = () => {
   };
 
   return (
-    <CContainer className="inicio-page">
+    <CContainer fluid className="inicio-page">
       <header className="inicio-header">
         <Banner />
       </header>
+      <h1 className="dashboard-title">Dashboard</h1>
       <div className="inicio-container">
-        <div className="inicio-search">
+        <div className="left-column">
+          <h2>Widget</h2>
           <CRow className="search-widget">
             <CCol>
               <div className="search-container-widget">
@@ -91,7 +92,7 @@ const Inicio = () => {
                   onChange={(e) => setBusqueda(e.target.value)}
                 />
                 <div className="search-buttons">
-                  <CButton color="primary" className="search-button" onClick={manejarBusqueda}>Buscar</CButton>
+                  <CButton className="search-button" onClick={manejarBusqueda}>Buscar</CButton>
                   <CButton color="secondary" className="clear-button" onClick={manejarLimpiarBusqueda}>Limpiar</CButton>
                 </div>
                 {itemEncontrado && (
@@ -104,7 +105,8 @@ const Inicio = () => {
             </CCol>
           </CRow>
         </div>
-        <div className="inicio-create-space">
+        <div className="right-column">
+          <h2>Espacios</h2>
           <div className="create-space-container">
             <CButton color="success" className="create-space-button" onClick={manejarCrearEspacio}>Crear Nuevo Espacio</CButton>
             <div className="categories-container">

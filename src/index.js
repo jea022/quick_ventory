@@ -5,14 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './scss/style.scss';
 import '@coreui/coreui/dist/css/coreui.min.css';
-import { GlobalProvider } from './GlobalContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <GlobalProvider>
-      <App />
-    </GlobalProvider>
+    <App />
   </React.StrictMode>
 );
 

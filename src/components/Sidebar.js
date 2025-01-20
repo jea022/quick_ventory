@@ -13,6 +13,7 @@ const Sidebar = ({ isVisible, toggleSidebar }) => {
 
   return (
     <CSidebar className={`sidebar ${isVisible ? 'visible' : ''}`} unfoldable>
+      <div className="sidebar-header">QuickVentory</div>
       <CSidebarNav className="sidebar-nav">
         <CNavItem className="nav-item">
           <CButton color="link" onClick={() => handleNavigation('/inicio')}>

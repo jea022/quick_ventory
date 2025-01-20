@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-import { CContainer, CRow, CCol, CForm, CFormInput, CButton, CAlert } from '@coreui/react';
+import '../scss/_login-register.scss';
 
 const Register = () => {
   const [nombre, setNombre] = useState('');
@@ -37,44 +37,44 @@ const Register = () => {
   };
 
   return (
-    <CContainer>
-      <CRow>
-        <CCol>
-          <h1>Crear cuenta</h1>
-          {error && <CAlert color="danger">{error}</CAlert>}
-          <CForm onSubmit={handleSubmit}>
-            <CFormInput
-              type="text"
-              placeholder="Nombre"
-              value={nombre}
-              onChange={(e) => setNombre(e.target.value)}
-            />
-            <CFormInput
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <CFormInput
-              type="password"
-              placeholder="Contraseña"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <CFormInput
-              type="password"
-              placeholder="Confirmar Contraseña"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            <CButton type="submit" color="primary">Registrar</CButton>
-          </CForm>
-          <p className="login-redirect">
-            ¿Ya tienes cuenta? <CButton color="link" onClick={handleLoginRedirect}>Inicia sesión aquí</CButton>
-          </p>
-        </CCol>
-      </CRow>
-    </CContainer>
+    <div className="register-page">
+      <form onSubmit={handleSubmit} className="register-form">
+        <h1 className="register-header">Crear cuenta</h1>
+        <input
+          type="text"
+          placeholder="Nombre"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
+          className="register-input"
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="register-input"
+        />
+        <input
+          type="password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="register-input"
+        />
+        <input
+          type="password"
+          placeholder="Confirmar Contraseña"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          className="register-input"
+        />
+        {error && <p className="error-message">{error}</p>}
+        <button type="submit" className="register-button">Registrar</button>
+        <p className="login-redirect">
+          ¿Ya tienes cuenta? <button onClick={handleLoginRedirect} className="login-button">Inicia sesión aquí</button>
+        </p>
+      </form>
+    </div>
   );
 };
 
