@@ -1,0 +1,40 @@
+.buscar-page {
+    padding: 20px;
+    background-color: #f4f4f9;
+    min-height: 100vh;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .category-button {
+    margin-top: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .category-button:hover {
+    background-color: #f4f4f9;
+  }
+  
+  .category-button .card-body {
+    text-align: center;
+  }
+  
+  .category-button .card-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .category-button .card-text {
+    font-size: 14px;
+    color: #666;
+  }

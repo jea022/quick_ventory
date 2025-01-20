@@ -37,7 +37,7 @@ function App() {
           <Routes>
             <Route path="/inicio" element={<Inicio />} />
             <Route path="/buscar" element={<Buscar />} />
-            <Route path="/espacios" element={<Espacios />} />
+            <Route path="/espacios/nombreEspacio" element={<Espacios />} />
             <Route path="/wisr" element={<Wisr />} />
             <Route path="/crear-espacio" element={<CrearEspacio />} />
             <Route path="/cerrar-sesion" element={<CerrarSesion />} />

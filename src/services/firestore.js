@@ -8,9 +8,52 @@ export const obtenerEspacios = async () => {
   return espaciosList;
 };
 
+export const obtenerEspacioPorNombre = async (nombreEspacio) => {
+  const q = query(collection(db, 'espacios'), where('name', '==', nombreEspacio));
+  const querySnapshot = await getDocs(q);
+  const espacio = querySnapshot.docs.length > 0 ? querySnapshot.docs[0] : null;
+  return espacio ? { id: espacio.id, ...espacio.data() } : null;
+};
+
 // Agregar un nuevo espacio
 export const agregarEspacio = async (espacio) => {
   await addDoc(collection(db, 'espacios'), espacio);
+};
+
+export const agregarObjetoAEspacio = async (nombreEspacio, nombreObjeto) => {
+  const q = query(collection(db, 'espacios'), where('name', '==', nombreEspacio));
+  const querySnapshot = await getDocs(q);
+  const espacioDoc = querySnapshot.docs.length > 0 ? querySnapshot.docs[0] : null;
+  if (espacioDoc) {
+    const espacioRef = doc(db, 'espacios', espacioDoc.id);
+    const espacioData = espacioDoc.data();
+    const nuevosItems = espacioData.items ? [...espacioData.items, { name: nombreObjeto }] : [{ name: nombreObjeto }];
+    await updateDoc(espacioRef, { items: nuevosItems });
+  }
+};
+
+export const eliminarObjetoDeEspacio = async (nombreEspacio, nombreObjeto) => {
+  const q = query(collection(db, 'espacios'), where('name', '==', nombreEspacio));
+  const querySnapshot = await getDocs(q);
+  const espacioDoc = querySnapshot.docs.length > 0 ? querySnapshot.docs[0] : null;
+  if (espacioDoc) {
+    const espacioRef = doc(db, 'espacios', espacioDoc.id);
+    const espacioData = espacioDoc.data();
+    const nuevosItems = espacioData.items.filter(item => item.name !== nombreObjeto);
+    await updateDoc(espacioRef, { items: nuevosItems });
+  }
+};
+
+export const actualizarObjetoEnEspacio = async (nombreEspacio, nombreObjeto, nuevoNombreObjeto) => {
+  const q = query(collection(db, 'espacios'), where('name', '==', nombreEspacio));
+  const querySnapshot = await getDocs(q);
+  const espacioDoc = querySnapshot.docs.length > 0 ? querySnapshot.docs[0] : null;
+  if (espacioDoc) {
+    const espacioRef = doc(db, 'espacios', espacioDoc.id);
+    const espacioData = espacioDoc.data();
+    const nuevosItems = espacioData.items.map(item => item.name === nombreObjeto ? { name: nuevoNombreObjeto } : item);
+    await updateDoc(espacioRef, { items: nuevosItems });
+  }
 };
 
 // Actualizar un espacio existente
@@ -20,9 +63,8 @@ export const actualizarEspacio = async (id, espacio) => {
 };
 
 // Eliminar un espacio
-export const eliminarEspacio = async (id) => {
-  const espacioRef = doc(db, 'espacios', id);
-  await deleteDoc(espacioRef);
+export const eliminarEspacio = async (idEspacio) => {
+  await deleteDoc(doc(db, 'espacios', idEspacio));
 };
 
 // Obtener items por nombre

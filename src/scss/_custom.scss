@@ -36,3 +36,44 @@ button.secondary {
 button.secondary:hover {
   background-color: darken($secondary-color, 10%);
 }
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: $dark-color;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $light-color;
+    color: $primary-color;
+  }
+
+  &.active {
+    background-color: $primary-color;
+    color: $light-color;
+  }
+}
+
+.toggle-sidebar {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: #333;
+  color: #e01111;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #cc0000;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
