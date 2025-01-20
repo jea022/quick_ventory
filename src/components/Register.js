@@ -3,11 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-<<<<<<< HEAD
-import '../styles.css'; // Cambia la ruta según la estructura correcta
-=======
 import { CContainer, CRow, CCol, CForm, CFormInput, CButton, CAlert } from '@coreui/react';
->>>>>>> ed5b7cc (Prueba)
 
 const Register = () => {
   const [nombre, setNombre] = useState('');
@@ -41,46 +37,6 @@ const Register = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <div className="register-page">
-      <form onSubmit={handleSubmit} className="register-form">
-        <h1 className="register-header">Crear cuenta</h1>
-        <input
-          type="text"
-          placeholder="Nombre"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-          className="register-input"
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="register-input"
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="register-input"
-        />
-        <input
-          type="password"
-          placeholder="Confirmar Contraseña"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          className="register-input"
-        />
-        {error && <p className="error-message">{error}</p>}
-        <button type="submit" className="register-button green">Registrarse</button>
-        <p className="login-redirect">
-          ¿Ya tienes cuenta? <button onClick={handleLoginRedirect} className="login-button">Inicia sesión aquí</button>
-        </p>
-      </form>
-    </div>
-=======
     <CContainer>
       <CRow>
         <CCol>
@@ -119,7 +75,6 @@ const Register = () => {
         </CCol>
       </CRow>
     </CContainer>
->>>>>>> ed5b7cc (Prueba)
   );
 };
 

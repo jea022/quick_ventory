@@ -1,0 +1,28 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #333; /* Fondo gris oscuro */
+    color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .app {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #333; /* Fondo gris oscuro */
+  }
+  
+  .container {
+    background-color: #444; /* Fondo gris oscuro */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }

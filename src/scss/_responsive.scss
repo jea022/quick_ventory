@@ -1,0 +1,46 @@
+@media (max-width: 768px) {
+    .inicio-search {
+      flex-direction: column;
+    }
+  
+    .login-page, .register-page {
+      flex-direction: column;
+    }
+  
+    .navbar-toolbar {
+      flex-direction: column;
+    }
+  
+    .navbar-link {
+      flex-direction: column;
+    }
+  
+    .search-input {
+      max-width: 100%;
+    }
+  
+    .search-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .search-button, .clear-button, .create-space-button {
+      width: 100%;
+    }
+  
+    .category-button {
+      flex: 1 1 100%;
+    }
+  
+    .ajustes-content {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  .section-title {
+    font-size: 1.5em;
+    color: #f4f4f9;
+    margin-bottom: 20px;
+    text-align: center;
+  }

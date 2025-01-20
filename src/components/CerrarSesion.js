@@ -1,9 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
-=======
 import { CContainer, CRow, CCol, CButton } from '@coreui/react';
->>>>>>> ed5b7cc (Prueba)
 
 const CerrarSesion = () => {
   const navigate = useNavigate();
@@ -15,16 +12,6 @@ const CerrarSesion = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <div className="cerrar-sesion-container">
-      <h2>Cerrar Sesión</h2>
-      <button onClick={handleLogout}>Cerrar Sesión</button>
-    </div>
-  );
-};
-
-export default CerrarSesion;
-=======
     <CContainer>
       <CRow>
         <CCol>
@@ -37,4 +24,3 @@ export default CerrarSesion;
 };
 
 export default CerrarSesion;
->>>>>>> ed5b7cc (Prueba)

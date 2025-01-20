@@ -1,35 +1,38 @@
 import React from 'react';
-import { CSidebar, CSidebarNav, CNavItem, CNavLink } from '@coreui/react';
-import { Link } from 'react-router-dom';
+import { CSidebar, CSidebarNav, CNavItem, CButton } from '@coreui/react';
+import { useNavigate } from 'react-router-dom';
+import '../scss/_sidebar.scss';
 
-const Sidebar = () => {
+const Sidebar = ({ isVisible, toggleSidebar }) => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    toggleSidebar(); // Esconder el sidebar después de la navegación
+  };
+
   return (
-    <CSidebar unfoldable>
-      <CSidebarNav>
-        <CNavItem>
-          <CNavLink component={Link} to="/inicio">
+    <CSidebar className={`sidebar ${isVisible ? 'visible' : ''}`} unfoldable>
+      <CSidebarNav className="sidebar-nav">
+        <CNavItem className="nav-item">
+          <CButton color="link" onClick={() => handleNavigation('/inicio')}>
             Inicio
-          </CNavLink>
+          </CButton>
         </CNavItem>
-        <CNavItem>
-          <CNavLink component={Link} to="/buscar">
+        <CNavItem className="nav-item">
+          <CButton color="link" onClick={() => handleNavigation('/buscar')}>
             Buscar
-          </CNavLink>
+          </CButton>
         </CNavItem>
-        <CNavItem>
-          <CNavLink component={Link} to="/espacios">
+        <CNavItem className="nav-item">
+          <CButton color="link" onClick={() => handleNavigation('/espacios')}>
             Espacios
-          </CNavLink>
+          </CButton>
         </CNavItem>
-        <CNavItem>
-          <CNavLink component={Link} to="/wisr">
+        <CNavItem className="nav-item">
+          <CButton color="link" onClick={() => handleNavigation('/wisr')}>
             Wisr
-          </CNavLink>
-        </CNavItem>
-        <CNavItem>
-          <CNavLink component={Link} to="/perfil-usuario">
-            Perfil del Usuario
-          </CNavLink>
+          </CButton>
         </CNavItem>
       </CSidebarNav>
     </CSidebar>

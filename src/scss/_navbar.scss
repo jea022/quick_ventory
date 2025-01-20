@@ -1,0 +1,29 @@
+.navbar {
+    background-color: #232f3e;
+    padding: 10px;
+    text-align: center;
+    color: #4CAF50;
+    border-radius: 0px;
+    margin-bottom: 20px;
+  }
+  
+  .navbar-toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .navbar-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .navbar-logo {
+    margin-right: 10px;
+  }
+  
+  .navbar-title {
+    font-weight: bold;
+    color: white;
+  }

@@ -1,0 +1,17 @@
+.banner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh; /* Ocupa toda la altura de la ventana */
+    background-color: transparent; /* Fondo transparente */
+  }
+  
+  .banner-text {
+    display: inline-block;
+    color: #fff; /* Texto blanco */
+    font-size: 2rem;
+    text-align: center;
+    background-color: #000; /* Fondo negro */
+    padding: 10px 20px; /* Espaciado alrededor del texto */
+    border-radius: 10px; /* Bordes redondeados */
+  }

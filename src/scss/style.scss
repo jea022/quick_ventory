@@ -1,6 +1,22 @@
 @import 'variables';
 @import 'custom';
 @import 'theme';
+@import 'general';
+@import 'fullscreen-container';
+@import 'header';
+@import 'navbar';
+@import 'search-widget';
+@import 'inventory-list';
+@import 'notifications';
+@import 'settings';
+@import 'inicio';
+@import 'forms';
+@import 'login-register';
+@import 'responsive';
+@import '@coreui/coreui/dist/css/coreui.min.css';
+
+
+
 
 .nav-link {
   display: block;
@@ -17,4 +33,28 @@
     background-color: $primary-color;
     color: $light-color;
   }
+}
+
+.toggle-sidebar {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: #333;
+  color: #e01111;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #444;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }

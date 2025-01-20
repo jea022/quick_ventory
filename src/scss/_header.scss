@@ -1,0 +1,59 @@
+.header {
+    background-color: #45a049 !important; /* Fondo verde */
+    color: #f4f4f9 !important;
+    padding: 10px 20px !important; /* Reducir la altura */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5) !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  
+  .header-logo {
+    width: 100px;
+    height: auto;
+    margin-top: 10px;
+  }
+  
+  .inicio-header {
+    width: 100%;
+    background-color: #45a049 !important; /* Fondo verde */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url('../assets/banner.png') no-repeat center center fixed;
+    background-size: cover;
+    padding: 100px;
+    animation: moveBackground 20s linear infinite;
+  }
+  
+  @keyframes moveBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 0; }
+  }
+  
+  .inicio-title {
+    font-size: 2em;
+    color: #fff;
+    margin-top: 20px;
+  }
+
+  .toggle-sidebar {
+    background: none !important;
+    border: none !important;
+    color: #f4f4f9 !important;
+    font-size: 24px !important;
+    cursor: pointer !important;
+  }
+  
+  .profile-pic {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+  }
+  
+  .ml-auto {
+    margin-left: auto !important;
+  }

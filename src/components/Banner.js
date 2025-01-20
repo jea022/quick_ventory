@@ -1,26 +1,16 @@
 import React from 'react';
-<<<<<<< HEAD
-import '../styles.css';
-
-const Banner = () => {
-  return (
-    <div className="banner">
-      <h3 className="banner-title">Bienvenido a QuickVentory!</h3>
-      <img src="/images/logo.png" alt="Logo" className="banner-logo" />
-    </div>
-=======
 import { CContainer, CRow, CCol } from '@coreui/react';
+import '../scss/_banner.scss';
 
 const Banner = () => {
   return (
-    <CContainer className="banner">
-      <CRow>
-        <CCol>
-          <h1>Bienvenido a Quick-Ventory</h1>
+    <CContainer className="banner-container">
+      <CRow className="justify-content-center">
+        <CCol className="text-center">
+          <h1 className="banner-text">Bienvenido a Quick Ventory</h1>
         </CCol>
       </CRow>
     </CContainer>
->>>>>>> ed5b7cc (Prueba)
   );
 };
 

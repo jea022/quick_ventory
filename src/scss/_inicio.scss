@@ -1,0 +1,130 @@
+.inicio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #444; /* Fondo gris oscuro */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    color: #f4f4f9;
+    min-height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+  }
+  
+  .inicio-logo {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: auto 20px;
+  }
+  
+  .inicio-title {
+    font-size: 2rem;
+    color: #4CAF50;
+  }
+  
+  .inicio-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 350px;
+  }
+  
+  .search-result {
+    margin-bottom: 20px;
+  }
+  
+  .inicio-create-space {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .create-space-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background-color: #444;
+    width: 800px;
+    margin: 0 auto; /* Centra horizontalmente */
+  }
+  
+  .create-space-button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .create-space-button:hover {
+    background-color: #45a049;
+  }
+  
+  .inicio-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .categories-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .category-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    flex: 1 1 calc(33.333% - 20px);
+    box-sizing: border-box;
+    margin: 10px;
+    transition: background-color 0.3s ease;
+    border: 1px solid #555;
+    background-color: #555;
+    color: #f4f4f9;
+  }
+  
+  .category-button:hover {
+    background-color: #666;
+  }
+  
+  .context-menu {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .context-menu button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+  }
+  
+  .context-menu button:hover {
+    background-color: #f4f4f9;
+  }
