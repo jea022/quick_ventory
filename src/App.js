@@ -35,7 +35,7 @@ function App() {
         <Header toggleSidebar={toggleSidebar} />
         <div className={`content ${isSidebarVisible ? 'sidebar-visible' : ''}`}>
           <Routes>
-            <Route path="/inicio" element={<Inicio />} />
+            <Route path="/" element={<Inicio />} />
             <Route path="/buscar" element={<Buscar />} />
             <Route path="/espacios/nombreEspacio" element={<Espacios />} />
             <Route path="/wisr" element={<Wisr />} />
