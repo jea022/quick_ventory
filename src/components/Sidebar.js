@@ -16,7 +16,7 @@ const Sidebar = ({ isVisible, toggleSidebar }) => {
       <div className="sidebar-header">QuickVentory</div>
       <CSidebarNav className="sidebar-nav">
         <CNavItem className="nav-item">
-          <CButton color="link" onClick={() => handleNavigation('/inicio')}>
+          <CButton color="link" onClick={() => handleNavigation('/')}>
             Inicio
           </CButton>
         </CNavItem>

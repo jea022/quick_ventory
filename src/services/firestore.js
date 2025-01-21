@@ -73,3 +73,10 @@ export const obtenerItemsPorNombre = async (nombre) => {
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs.map(doc => doc.data());
 };
+
+export const obtenerObjetos = async () => {
+  const objetosCollection = collection(db, 'objetos');
+  const objetosSnapshot = await getDocs(objetosCollection);
+  const objetosList = objetosSnapshot.docs.map(doc => doc.data());
+  return objetosList;
+};
