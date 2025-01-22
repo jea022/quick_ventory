@@ -91,3 +91,7 @@ export const obtenerUltimosEspaciosAccedidos = async () => {
   });
   return espacios;
 };
+
+export const agregarItem = async (item) => {
+  await addDoc(collection(db, 'items'), item);
+};

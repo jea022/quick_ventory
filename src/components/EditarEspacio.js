@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { obtenerEspacios, actualizarEspacio } from '../services/firestore';
+import { obtenerEspacioPorNombre, actualizarEspacio } from '../services/firestore';
 import Forms from './Forms';
 import '../scss/style.scss';
 
@@ -27,15 +27,13 @@ const EditarEspacio = () => {
     }
 
     const espacioActualizado = { name: nombre, location: ubicacion, description: descripcion };
-    const espacios = await obtenerEspacios();
-    const espacioIndex = espacios.findIndex(espacio => espacio.id === locationState.espacio.id);
-
-    if (espacioIndex !== -1) {
+    try {
       await actualizarEspacio(locationState.espacio.id, espacioActualizado);
       alert('Espacio actualizado');
-      navigate('/');
-    } else {
-      alert('Espacio no encontrado');
+      navigate('/espacios'); // Redirige a la lista de espacios después de actualizar el espacio
+    } catch (error) {
+      console.error('Error al actualizar el espacio:', error);
+      alert('Hubo un error al actualizar el espacio. Por favor, inténtalo de nuevo.');
     }
   };
 

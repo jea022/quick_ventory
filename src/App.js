@@ -38,6 +38,7 @@ function App() {
             <Route path="/" element={<Inicio />} />
             <Route path="/buscar" element={<Buscar />} />
             <Route path="/espacios" element={<Espacios />} />
+            <Route path="/espacio/:spaceName" element={<VerEspacio />} />
             <Route path="/wisr" element={<Wisr />} />
             <Route path="/crear-espacio" element={<CrearEspacio />} />
             <Route path="/cerrar-sesion" element={<CerrarSesion />} />
@@ -48,8 +49,8 @@ function App() {
             <Route path="/informacion" element={<Informacion />} />
             <Route path="/editar-item" element={<EditarItem />} />
             <Route path="/editar-informacion" element={<EditarInformacion />} />
-            <Route path="/editar-espacio" element={<EditarEspacio />} />
-            <Route path="/crear-item" element={<CrearItem />} />
+            <Route path="/editar-espacio/:spaceId" element={<EditarEspacio />} />
+            <Route path="/crear-item/:spaceName" element={<CrearItem />} />
           </Routes>
         </div>
       </div>

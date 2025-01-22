@@ -16,6 +16,13 @@
 @import './_header.scss';
 @import './_inicio.scss';
 
+@import 'login-register';
+@import 'responsive';
+@import 'buscar';
+@import '@coreui/coreui/dist/css/coreui.min.css';
+@import './_header.scss';
+@import './_inicio.scss';
+
 .body {
   display: flex;
   flex-direction: column;
@@ -80,25 +87,34 @@
 
 .ver-espacio-container {
   padding: 20px;
-  background-color: #f8f9fa;
+  background-color: #333;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  height: 100vh;
+
 }
 
 .espacio-title {
   font-size: 32px;
   margin-bottom: 20px;
-  color: #333;
+  color: #f8f9fa;
+  text-align: center;
+  
 }
 
 .crear-item-button {
   margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .items-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  color: white; /* Cambiar el color del texto a blanco */  
 }
 
 .item-card {
