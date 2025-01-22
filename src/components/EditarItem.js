@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { CContainer, CRow, CCol, CForm, CFormInput, CButton } from '@coreui/react';
+import Forms from './Forms';
 
 const EditarItem = () => {
   const { spaceName, itemName } = useParams();
@@ -18,39 +18,20 @@ const EditarItem = () => {
     // Lógica para guardar los cambios
   };
 
+  const campos = [
+    { type: 'text', placeholder: 'Nombre', value: name, onChange: setName, required: true },
+    { type: 'text', placeholder: 'Unidad', value: unit, onChange: setUnit },
+    { type: 'text', placeholder: 'Descripción', value: description, onChange: setDescription },
+    { type: 'file', placeholder: 'Foto', value: photo, onChange: setPhoto }
+  ];
+
   return (
-    <CContainer>
-      <CRow>
-        <CCol>
-          <h1>Editar Item</h1>
-          <CForm>
-            <CFormInput
-              type="text"
-              placeholder="Nombre"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <CFormInput
-              type="text"
-              placeholder="Unidad"
-              value={unit}
-              onChange={(e) => setUnit(e.target.value)}
-            />
-            <CFormInput
-              type="text"
-              placeholder="Descripción"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <CFormInput
-              type="file"
-              onChange={(e) => setPhoto(e.target.files[0])}
-            />
-            <CButton color="primary" onClick={handleSave}>Guardar</CButton>
-          </CForm>
-        </CCol>
-      </CRow>
-    </CContainer>
+    <Forms
+      titulo="Editar Item"
+      campos={campos}
+      manejarGuardar={handleSave}
+      botonTexto="Guardar"
+    />
   );
 };
 

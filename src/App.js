@@ -18,6 +18,8 @@ import EditarInformacion from './components/EditarInformacion';
 import EditarEspacio from './components/EditarEspacio';
 import CrearItem from './components/CrearItem';
 import Login from './components/Login';
+import VerEspacio from './components/VerEspacio';
+
 
 function App() {
   const [isSidebarVisible, setSidebarVisible] = useState(false);

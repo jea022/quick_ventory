@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CContainer, CRow, CCol, CForm, CFormInput, CButton } from '@coreui/react';
 import '../scss/style.scss';
+import Forms from './Forms';
+
 
 const EditarInformacion = () => {
   const navigate = useNavigate();

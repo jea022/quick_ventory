@@ -68,10 +68,10 @@ export const eliminarEspacio = async (idEspacio) => {
 };
 
 // Obtener items por nombre
-export const obtenerItemsPorNombre = async (nombre) => {
-  const q = query(collection(db, 'items'), where('nombre', '>=', nombre));
+export const obtenerItemsPorNombre = async (nombreEspacio) => {
+  const q = query(collection(db, 'items'), where('space', '==', nombreEspacio));
   const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map(doc => doc.data());
+  return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 };
 
 export const obtenerObjetos = async () => {
