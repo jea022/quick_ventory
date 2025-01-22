@@ -77,3 +77,33 @@ button.secondary:hover {
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #cc0000;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.search-button {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  background-color: #28a745; /* Verde */
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #218838; /* Verde oscuro */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

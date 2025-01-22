@@ -13,9 +13,11 @@ const Buscar = () => {
     const fetchObjetos = async () => {
       try {
         const objetos = await obtenerObjetos();
+        console.log('Objetos fetched:', objetos);
         setObjetos(objetos);
         setResultados(objetos);
       } catch (err) {
+        console.error('Error fetching objetos:', err);
         setError('Error fetching data');
       }
     };
@@ -28,6 +30,7 @@ const Buscar = () => {
     const resultadosFiltrados = objetos.filter(objeto =>
       objeto.name.toLowerCase().includes(valorBusqueda)
     );
+    console.log('Filtered results:', resultadosFiltrados);
     setResultados(resultadosFiltrados);
   };
 
@@ -38,12 +41,15 @@ const Buscar = () => {
 
   return (
     <CContainer fluid className="buscar-page">
+      <header className="buscar-header">
+      
+      </header>
       <h1 className="dashboard-title">Buscar</h1>
       <div className="buscar-container">
         <CRow className="justify-content-center">
           <CCol md="8">
             <CFormInput
-              className="search-input"
+              className="form-control search-input"
               type="text"
               placeholder="Buscar Objeto..."
               value={busqueda}
@@ -57,24 +63,22 @@ const Buscar = () => {
         </CRow>
         <CRow className="justify-content-center mt-3">
           <CCol md="8">
-            <div className="result-container">
-              {error ? (
-                <div className="alert alert-danger">{error}</div>
-              ) : (
-                <>
-                  {resultados.length === 0 && !error && (
-                    <div className="no-results">No hay resultados</div>
-                  )}
-                  <CListGroup>
-                    {resultados.map((objeto, index) => (
-                      <CListGroupItem key={index}>
-                        {objeto.name}
-                      </CListGroupItem>
-                    ))}
-                  </CListGroup>
-                </>
-              )}
-            </div>
+            {error ? (
+              <div className="alert alert-danger">{error}</div>
+            ) : (
+              <>
+                {resultados.length === 0 && !error && (
+                  <div className="no-results">No hay resultados</div>
+                )}
+                <CListGroup>
+                  {resultados.map((objeto, index) => (
+                    <CListGroupItem key={index}>
+                      {objeto.name}
+                    </CListGroupItem>
+                  ))}
+                </CListGroup>
+              </>
+            )}
           </CCol>
         </CRow>
       </div>

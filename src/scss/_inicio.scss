@@ -1,11 +1,12 @@
 .inicio-page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 120vh;
   width: 100vw; /* Ocupa todo el ancho de la pantalla */
   background-color: #333; /* Cambia el color de fondo a #333 */
-  padding: 0; /* Elimina el padding para ocupar todo el espacio */
+  padding: 20px; /* Ajusta el padding */
   box-sizing: border-box; /* Incluye el padding en el ancho total */
+
 }
 
 .inicio-header {
@@ -14,7 +15,7 @@
 }
 
 .dashboard-title {
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
@@ -35,32 +36,33 @@
 
 .left-column, .right-column {
   flex: 1;
+  margin: 10px;
+  background-color: #7756eeb9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
-}
-
-.left-column {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.right-column {
+.search-widget, .create-space-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
-.search-container-widget {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.search-container-widget, .create-space-container {
+  width: 100%;
   padding: 40px;
   border: 10px solid #757474;
   border-radius: 8px;
   background-color: #333; /* Cambia el color de fondo a #333 */
-  width: 100%; /* Ocupa todo el ancho disponible */
-  max-width: 350px; /* Ancho máximo */
   box-sizing: border-box; /* Incluye el padding en el ancho total */
+  margin-bottom: 20px;
 }
 
 .search-input {
@@ -88,12 +90,11 @@
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  color: #45a049;
+  color: white;
 }
 
 .search-button {
-  background-color: #4CAF50; /* Cambia el color del botón a #4CAF50 */
-  color: white;
+  background-color: #300eca; /* Cambia el color del botón a #4CAF50 */
 }
 
 .search-button:hover {
@@ -102,7 +103,6 @@
 
 .clear-button {
   background-color: #f44336;
-  color: white;
 }
 
 .clear-button:hover {
@@ -113,18 +113,6 @@
   margin-top: 20px;
   text-align: center;
   color: #f4f4f9;
-}
-
-.create-space-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px;
-  border: 12px solid #757474;
-  border-radius: 8px;
-  background-color: #333; /* Cambia el color de fondo a #333 */
-  width: 100%; /* Ocupa todo el ancho disponible */
-  box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
 
 .create-space-button {
@@ -193,4 +181,22 @@
 
 .context-menu button:hover {
   background-color: #f4f4f9;
+}
+
+.ultimos-espacios-widget {
+  margin-top: 40px;
+}
+
+.ultimos-espacios-widget .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ultimos-espacios-widget .card {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.no-espacios {
+  margin-top: 20px;
 }

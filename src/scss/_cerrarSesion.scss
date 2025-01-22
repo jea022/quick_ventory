@@ -1,0 +1,34 @@
+.cerrar-sesion-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Cambiar align-items para que esté más arriba */
+  height: 100vh;
+  background-color: #333;
+  padding-top: 50px; /* Agregar padding-top para ajustar la posición */
+}
+
+.cerrar-sesion-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cerrar-sesion-col {
+  text-align: center;
+  color: #ffffff;
+}
+
+.cerrar-sesion-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 15px 40px; /* Hacer el botón más largo */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px; /* Agregar margen superior */
+}
+
+.cerrar-sesion-button:hover {
+  background-color: #c82333;
+}

@@ -1,130 +1,88 @@
-// filepath: /c:/Users/aguin/Escritorio/GradoDam2/quick_ventory/src/components/Espacios.js
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { obtenerEspacioPorNombre, agregarObjetoAEspacio, eliminarObjetoDeEspacio, actualizarObjetoEnEspacio } from '../services/firestore';
-import { CContainer, CRow, CCol, CFormInput, CButton, CCard, CCardBody, CCardTitle, CCardText, CModal, CModalBody, CModalFooter } from '@coreui/react';
+import { obtenerEspacios, eliminarEspacio } from '../services/firestore';
+import { CModal, CModalBody, CModalFooter } from '@coreui/react';
 import '../scss/_espacios.scss';
 
 const Espacios = () => {
-  const [espacio, setEspacio] = useState(null);
-  const [nuevoObjeto, setNuevoObjeto] = useState('');
-  const [busqueda, setBusqueda] = useState('');
+  const [espacios, setEspacios] = useState([]);
   const [menuContextual, setMenuContextual] = useState(null);
-  const [objetoSeleccionado, setObjetoSeleccionado] = useState(null);
-  const [nuevoNombreObjeto, setNuevoNombreObjeto] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchEspacio = async () => {
-      const espacio = await obtenerEspacioPorNombre('nombreEspacio'); // Cambia 'nombreEspacio' por el nombre real del espacio
-      setEspacio(espacio);
+    const fetchEspacios = async () => {
+      const espacios = await obtenerEspacios();
+      setEspacios(espacios);
     };
-    fetchEspacio();
+    fetchEspacios();
   }, []);
 
-  const manejarAgregarObjeto = async () => {
-    if (nuevoObjeto.trim() !== '') {
-      await agregarObjetoAEspacio('nombreEspacio', nuevoObjeto); // Cambia 'nombreEspacio' por el nombre real del espacio
-      setNuevoObjeto('');
-      const espacioActualizado = await obtenerEspacioPorNombre('nombreEspacio'); // Cambia 'nombreEspacio' por el nombre real del espacio
-      setEspacio(espacioActualizado);
-    }
+  const manejarClickEspacio = (nombreEspacio) => {
+    navigate(`/espacio/${nombreEspacio}`);
   };
 
-  const manejarEliminarObjeto = async (nombreObjeto) => {
-    await eliminarObjetoDeEspacio('nombreEspacio', nombreObjeto); // Cambia 'nombreEspacio' por el nombre real del espacio
-    const espacioActualizado = await obtenerEspacioPorNombre('nombreEspacio'); // Cambia 'nombreEspacio' por el nombre real del espacio
-    setEspacio(espacioActualizado);
-    ocultarMenuContextual();
+  const manejarCrearEspacio = () => {
+    navigate('/crear-espacio');
   };
 
-  const manejarEditarObjeto = async () => {
-    if (nuevoNombreObjeto.trim() !== '') {
-      await actualizarObjetoEnEspacio('nombreEspacio', objetoSeleccionado, nuevoNombreObjeto); // Cambia 'nombreEspacio' por el nombre real del espacio
-      const espacioActualizado = await obtenerEspacioPorNombre('nombreEspacio'); // Cambia 'nombreEspacio' por el nombre real del espacio
-      setEspacio(espacioActualizado);
-      setNuevoNombreObjeto('');
-      ocultarMenuContextual();
-    }
-  };
-
-  const mostrarMenuContextual = (event, objeto) => {
+  const mostrarMenuContextual = (event, espacio) => {
     event.preventDefault();
-    setObjetoSeleccionado(objeto);
     setMenuContextual({
       x: event.clientX,
       y: event.clientY,
+      espacio,
     });
   };
 
   const ocultarMenuContextual = () => {
     setMenuContextual(null);
-    setObjetoSeleccionado(null);
   };
 
-  const objetosFiltrados = espacio?.items?.filter(item => item.name.toLowerCase().includes(busqueda.toLowerCase())) || [];
+  const manejarEditarEspacio = (espacio) => {
+    navigate(`/editar-espacio/${espacio.name}`, { state: { espacio } });
+    ocultarMenuContextual();
+  };
 
-  if (!espacio) {
-    return <p>Cargando...</p>;
-  }
+  const manejarEliminarEspacio = async (idEspacio) => {
+    await eliminarEspacio(idEspacio);
+    setEspacios(espacios.filter(espacio => espacio.id !== idEspacio));
+    ocultarMenuContextual();
+  };
 
   return (
-    <CContainer className="espacios-page">
-      <h1 className="section-title">{espacio.name}</h1>
-      <CRow>
-        <CCol>
-          <h2>Objetos</h2>
-          <CFormInput
-            type="text"
-            placeholder="Buscar objeto..."
-            value={busqueda}
-            onChange={(e) => setBusqueda(e.target.value)}
-          />
-          {objetosFiltrados.length > 0 ? (
-            objetosFiltrados.map((item, index) => (
-              <CCard key={index} onContextMenu={(e) => mostrarMenuContextual(e, item.name)}>
-                <CCardBody>
-                  <CCardTitle>{item.name}</CCardTitle>
-                </CCardBody>
-              </CCard>
-            ))
-          ) : (
-            <p>No hay objetos en este espacio.</p>
-          )}
-        </CCol>
-      </CRow>
-      <CRow>
-        <CCol>
-          <h2>Agregar Nuevo Objeto</h2>
-          <CFormInput
-            type="text"
-            placeholder="Nombre del objeto"
-            value={nuevoObjeto}
-            onChange={(e) => setNuevoObjeto(e.target.value)}
-          />
-          <CButton color="success" onClick={manejarAgregarObjeto}>Agregar Objeto</CButton>
-        </CCol>
-      </CRow>
-      <CButton color="secondary" onClick={() => navigate(-1)}>Volver</CButton>
+    <div className="espacios-page">
+      <h1 className="section-title">Creador de Espacios</h1>
+      <button className="btn btn-primary" onClick={manejarCrearEspacio}>Crear Nuevo Espacio</button>
+      <h2 className="section-title mt-4">Espacios</h2>
+      <div className="row">
+        {espacios.length > 0 ? (
+          espacios.map((espacio, index) => (
+            <div className="col-md-4" key={index}>
+              <div className="card" onContextMenu={(e) => mostrarMenuContextual(e, espacio)}>
+                <div className="card-body" onClick={() => manejarClickEspacio(espacio.name)}>
+                  <h5 className="card-title">{espacio.name}</h5>
+                  <p className="card-text">{espacio.description}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="no-espacios">No hay espacios creados.</p>
+        )}
+      </div>
 
       {menuContextual && (
         <CModal visible={menuContextual !== null} onDismiss={ocultarMenuContextual}>
           <CModalBody>
-            <CFormInput
-              type="text"
-              placeholder="Nuevo nombre del objeto"
-              value={nuevoNombreObjeto}
-              onChange={(e) => setNuevoNombreObjeto(e.target.value)}
-            />
-            <CButton color="primary" onClick={manejarEditarObjeto}>Editar</CButton>
-            <CButton color="danger" onClick={() => manejarEliminarObjeto(objetoSeleccionado)}>Eliminar</CButton>
+            <button className="btn btn-primary" onClick={() => manejarEditarEspacio(menuContextual.espacio)}>Editar</button>
+            <button className="btn btn-danger" onClick={() => manejarEliminarEspacio(menuContextual.espacio.id)}>Eliminar</button>
           </CModalBody>
           <CModalFooter>
-            <CButton color="secondary" onClick={ocultarMenuContextual}>Cerrar</CButton>
+            <button className="btn btn-secondary" onClick={ocultarMenuContextual}>Cerrar</button>
           </CModalFooter>
         </CModal>
       )}
-    </CContainer>
+    </div>
   );
 };
 

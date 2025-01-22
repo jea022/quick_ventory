@@ -5,7 +5,6 @@
 @import 'fullscreen-container';
 @import 'header';
 @import 'navbar';
-@import 'search-widget';
 @import 'inventory-list';
 @import 'notifications';
 @import 'settings';
@@ -13,5 +12,6 @@
 @import 'login-register';
 @import 'responsive';
 @import 'buscar';
-@import 'espacios';
 @import '@coreui/coreui/dist/css/coreui.min.css';
+@import './_header.scss';
+@import './_inicio.scss';

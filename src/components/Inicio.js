@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { obtenerEspacios, eliminarEspacio } from '../services/firestore';
-import { CContainer, CRow, CCol, CFormInput, CButton, CCard, CCardBody, CCardTitle, CCardText, CModal, CModalBody, CModalFooter } from '@coreui/react';
+import { obtenerEspacios, eliminarEspacio, obtenerUltimosEspaciosAccedidos } from '../services/firestore';
+import { CContainer, CFormInput, CButton, CCard, CCardBody, CCardTitle, CCardText, CModal, CModalBody, CModalFooter } from '@coreui/react';
 import Banner from './Banner';
 import '../scss/style.scss';
 import '../scss/_inicio.scss';
+import "../scss/_header.scss";
 
 const Inicio = () => {
   const [espacios, setEspacios] = useState([]);
@@ -15,7 +16,7 @@ const Inicio = () => {
 
   useEffect(() => {
     const fetchEspacios = async () => {
-      const espacios = await obtenerEspacios();
+      const espacios = await obtenerUltimosEspaciosAccedidos();
       setEspacios(espacios);
     };
     fetchEspacios();
@@ -30,17 +31,7 @@ const Inicio = () => {
   };
 
   const manejarBusqueda = () => {
-    let itemEncontrado = null;
-    espacios.forEach(espacio => {
-      if (espacio.items) {
-        espacio.items.forEach(item => {
-          if (item.name.toLowerCase().includes(busqueda.toLowerCase())) {
-            itemEncontrado = { name: item.name, space: espacio.name };
-          }
-        });
-      }
-    });
-    setItemEncontrado(itemEncontrado);
+    // Lógica para manejar la búsqueda
   };
 
   const manejarLimpiarBusqueda = () => {
@@ -81,34 +72,32 @@ const Inicio = () => {
       <div className="inicio-container">
         <div className="left-column">
           <h2>Widget</h2>
-          <CRow className="search-widget">
-            <CCol>
-              <div className="search-container-widget">
-                <CFormInput
-                  type="text"
-                  placeholder="Buscar Item..."
-                  className="search-input"
-                  value={busqueda}
-                  onChange={(e) => setBusqueda(e.target.value)}
-                />
-                <div className="search-buttons">
-                  <CButton className="search-button" onClick={manejarBusqueda}>Buscar</CButton>
-                  <CButton color="secondary" className="clear-button" onClick={manejarLimpiarBusqueda}>Limpiar</CButton>
-                </div>
-                {itemEncontrado && (
-                  <div className="search-result">
-                    <p>Objeto encontrado: <strong>{itemEncontrado.name}</strong></p>
-                    <p>Ubicación: <strong>{itemEncontrado.space}</strong></p>
-                  </div>
-                )}
+          <div className="search-widget">
+            <div className="search-container-widget">
+              <CFormInput
+                type="text"
+                placeholder="Buscar Item..."
+                className="search-input"
+                value={busqueda}
+                onChange={(e) => setBusqueda(e.target.value)}
+              />
+              <div className="search-buttons">
+                <button className="search-button" onClick={manejarBusqueda}>Buscar</button>
+                <button className="clear-button" onClick={manejarLimpiarBusqueda}>Limpiar</button>
               </div>
-            </CCol>
-          </CRow>
+              {itemEncontrado && (
+                <div className="search-result">
+                  <p>Objeto encontrado: <strong>{itemEncontrado.name}</strong></p>
+                  <p>Ubicación: <strong>{itemEncontrado.space}</strong></p>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
         <div className="right-column">
           <h2>Espacios</h2>
           <div className="create-space-container">
-            <CButton color="success" className="create-space-button" onClick={manejarCrearEspacio}>Crear Nuevo Espacio</CButton>
+            <button className="create-space-button" onClick={manejarCrearEspacio}>Crear Nuevo Espacio</button>
             <div className="categories-container">
               {espacios.length > 0 ? (
                 espacios.map((espacio, index) => (
@@ -130,11 +119,11 @@ const Inicio = () => {
       {menuContextual && (
         <CModal visible={menuContextual !== null} onDismiss={ocultarMenuContextual}>
           <CModalBody>
-            <CButton color="primary" onClick={() => manejarEditarEspacio(menuContextual.espacio)}>Editar</CButton>
-            <CButton color="danger" onClick={() => manejarEliminarEspacio(menuContextual.espacio.id)}>Eliminar</CButton>
+            <button className="btn btn-primary" onClick={() => manejarEditarEspacio(menuContextual.espacio)}>Editar</button>
+            <button className="btn btn-danger" onClick={() => manejarEliminarEspacio(menuContextual.espacio.id)}>Eliminar</button>
           </CModalBody>
           <CModalFooter>
-            <CButton color="secondary" onClick={ocultarMenuContextual}>Cerrar</CButton>
+            <button className="btn btn-secondary" onClick={ocultarMenuContextual}>Cerrar</button>
           </CModalFooter>
         </CModal>
       )}

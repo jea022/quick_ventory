@@ -17,9 +17,7 @@ import EditarItem from './components/EditarItem';
 import EditarInformacion from './components/EditarInformacion';
 import EditarEspacio from './components/EditarEspacio';
 import CrearItem from './components/CrearItem';
-import PerfilUsuario from './components/PerfilUsuario';
 import Login from './components/Login';
-import MainContent from './components/MainContent';
 
 function App() {
   const [isSidebarVisible, setSidebarVisible] = useState(false);
@@ -37,7 +35,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Inicio />} />
             <Route path="/buscar" element={<Buscar />} />
-            <Route path="/espacios/nombreEspacio" element={<Espacios />} />
+            <Route path="/espacios" element={<Espacios />} />
             <Route path="/wisr" element={<Wisr />} />
             <Route path="/crear-espacio" element={<CrearEspacio />} />
             <Route path="/cerrar-sesion" element={<CerrarSesion />} />
@@ -50,8 +48,6 @@ function App() {
             <Route path="/editar-informacion" element={<EditarInformacion />} />
             <Route path="/editar-espacio" element={<EditarEspacio />} />
             <Route path="/crear-item" element={<CrearItem />} />
-            <Route path="/perfil-usuario" element={<PerfilUsuario />} />
-            <Route path="/" element={<MainContent />} />
           </Routes>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CContainer, CRow, CCol, CForm, CFormInput, CButton } from '@coreui/react';
-import '../scss/style.scss';
 
 const CrearItem = () => {
   const { spaceName } = useParams();

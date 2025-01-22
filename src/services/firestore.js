@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where } from 'firebase/firestore';
+import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where, orderBy, limit } from 'firebase/firestore';
 import { db } from '../firebase';
 
 // Obtener todos los espacios
@@ -79,4 +79,15 @@ export const obtenerObjetos = async () => {
   const objetosSnapshot = await getDocs(objetosCollection);
   const objetosList = objetosSnapshot.docs.map(doc => doc.data());
   return objetosList;
+};
+
+export const obtenerUltimosEspaciosAccedidos = async () => {
+  const espaciosRef = collection(db, 'espacios');
+  const q = query(espaciosRef, orderBy('lastAccessed', 'desc'), limit(3));
+  const querySnapshot = await getDocs(q);
+  const espacios = [];
+  querySnapshot.forEach((doc) => {
+    espacios.push({ id: doc.id, ...doc.data() });
+  });
+  return espacios;
 };

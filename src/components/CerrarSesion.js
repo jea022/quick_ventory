@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CContainer, CRow, CCol, CButton } from '@coreui/react';
+import '../scss/_cerrarSesion.scss'; // Asegúrate de crear este archivo de estilos
 
 const CerrarSesion = () => {
   const navigate = useNavigate();
@@ -12,14 +12,14 @@ const CerrarSesion = () => {
   };
 
   return (
-    <CContainer>
-      <CRow>
-        <CCol>
+    <div className="cerrar-sesion-container">
+      <div className="cerrar-sesion-row">
+        <div className="cerrar-sesion-col">
           <h2>Cerrar Sesión</h2>
-          <CButton color="danger" onClick={handleLogout}>Cerrar Sesión</CButton>
-        </CCol>
-      </CRow>
-    </CContainer>
+          <button className="cerrar-sesion-button" onClick={handleLogout}>Cerrar Sesión</button>
+        </div>
+      </div>
+    </div>
   );
 };
 

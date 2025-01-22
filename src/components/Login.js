@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate('/inicio'); // Redirige a /inicio después de iniciar sesión
+      navigate('/'); // Redirige a /inicio después de iniciar sesión
     } catch (error) {
       setError('Error al iniciar sesión. Verifica tus credenciales.');
     }

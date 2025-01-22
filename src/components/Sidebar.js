@@ -11,6 +11,12 @@ const Sidebar = ({ isVisible, toggleSidebar }) => {
     toggleSidebar(); // Esconder el sidebar después de la navegación
   };
 
+  const handleLogout = () => {
+    // Lógica para cerrar sesión
+    console.log('Cerrar sesión');
+    navigate('/login'); // Redirige al login
+  };
+
   return (
     <CSidebar className={`sidebar ${isVisible ? 'visible' : ''}`} unfoldable>
       <div className="sidebar-header">QuickVentory</div>
@@ -33,6 +39,11 @@ const Sidebar = ({ isVisible, toggleSidebar }) => {
         <CNavItem className="nav-item">
           <CButton color="link" onClick={() => handleNavigation('/wisr')}>
             Wisr
+          </CButton>
+        </CNavItem>
+        <CNavItem className="nav-item">
+          <CButton color="link" onClick={() => handleNavigation('/cerrar-sesion')}>
+            Cerrar sesión
           </CButton>
         </CNavItem>
       </CSidebarNav>
