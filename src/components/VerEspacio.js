@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { obtenerEspacioPorNombre, obtenerItemsPorNombre, eliminarItem } from '../services/firestore';
-import { CButton, CCard, CCardBody, CCardTitle, CCardText } from '@coreui/react';
+import { CButton } from '@coreui/react';
 import ContextMenu from './ContextMenu';
 import '../scss/style.scss';
 
@@ -59,19 +59,21 @@ const VerEspacio = () => {
           <CButton color="primary" onClick={() => navigate(`/crear-item/${spaceName}`)} className="crear-item-button">
             Crear Item
           </CButton>
-          <div className="items-list">
+          <div className="row">
             {items.length > 0 ? (
               items.map((item, index) => (
-                <CCard key={index} className="item-card" onContextMenu={(e) => manejarClickDerecho(e, item)}>
-                  <CCardBody>
-                    <CCardTitle>{item.name}</CCardTitle>
-                    <CCardText>{item.description}</CCardText>
-                    <CCardText>{item.quantity} unidades</CCardText>
-                  </CCardBody>
-                </CCard>
+                <div className="col-md-4" key={index}>
+                  <div className="card item-card" onContextMenu={(e) => manejarClickDerecho(e, item)}>
+                    <div className="card-body">
+                      <h5 className="card-title">{item.name}</h5>
+                      <p className="card-text">{item.description}</p>
+                      <p className="card-text">{item.quantity} unidades</p>
+                    </div>
+                  </div>
+                </div>
               ))
             ) : (
-              <p>No hay ítems en este espacio.</p>
+              <p className="no-items">No hay ítems en este espacio.</p>
             )}
           </div>
         </>
