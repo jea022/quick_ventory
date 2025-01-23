@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { obtenerEspacios, eliminarEspacio } from '../services/firestore';
-import { CModal, CModalBody, CModalFooter } from '@coreui/react';
+import ContextMenu from './ContextMenu';
 import '../scss/_espacios.scss';
 
 const Espacios = () => {
@@ -28,8 +28,8 @@ const Espacios = () => {
   const mostrarMenuContextual = (event, espacio) => {
     event.preventDefault();
     setMenuContextual({
-      x: event.clientX,
-      y: event.clientY,
+      mouseX: event.clientX,
+      mouseY: event.clientY,
       espacio,
     });
   };
@@ -38,14 +38,14 @@ const Espacios = () => {
     setMenuContextual(null);
   };
 
-  const manejarEditarEspacio = (espacio) => {
-    navigate(`/editar-espacio/${espacio.name}`, { state: { espacio } });
+  const manejarEditarEspacio = () => {
+    navigate(`/editar-espacio/${menuContextual.espacio.name}`, { state: { espacio: menuContextual.espacio } });
     ocultarMenuContextual();
   };
 
-  const manejarEliminarEspacio = async (idEspacio) => {
-    await eliminarEspacio(idEspacio);
-    setEspacios(espacios.filter(espacio => espacio.id !== idEspacio));
+  const manejarEliminarEspacio = async () => {
+    await eliminarEspacio(menuContextual.espacio.id);
+    setEspacios(espacios.filter(espacio => espacio.id !== menuContextual.espacio.id));
     ocultarMenuContextual();
   };
 
@@ -72,15 +72,13 @@ const Espacios = () => {
       </div>
 
       {menuContextual && (
-        <CModal visible={menuContextual !== null} onDismiss={ocultarMenuContextual}>
-          <CModalBody>
-            <button className="btn btn-primary" onClick={() => manejarEditarEspacio(menuContextual.espacio)}>Editar</button>
-            <button className="btn btn-danger" onClick={() => manejarEliminarEspacio(menuContextual.espacio.id)}>Eliminar</button>
-          </CModalBody>
-          <CModalFooter>
-            <button className="btn btn-secondary" onClick={ocultarMenuContextual}>Cerrar</button>
-          </CModalFooter>
-        </CModal>
+        <ContextMenu
+          title="Editar Espacio"
+          onEdit={manejarEditarEspacio}
+          onClose={ocultarMenuContextual}
+          onDelete={manejarEliminarEspacio}
+          position={menuContextual}
+        />
       )}
     </div>
   );

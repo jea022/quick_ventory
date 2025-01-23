@@ -51,6 +51,7 @@ function App() {
             <Route path="/editar-informacion" element={<EditarInformacion />} />
             <Route path="/editar-espacio/:spaceId" element={<EditarEspacio />} />
             <Route path="/crear-item/:spaceName" element={<CrearItem />} />
+            <Route path="/editar-item/:spaceName/:itemName" element={<EditarItem />} /> {/* Ruta para editar un ítem */}
           </Routes>
         </div>
       </div>

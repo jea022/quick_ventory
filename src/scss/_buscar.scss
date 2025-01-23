@@ -29,6 +29,7 @@
   width: 100%;
   max-width: 2000px; /* Ajustar el ancho máximo */
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .search-button, .clear-button {
@@ -82,8 +83,16 @@
 
 .no-results {
   text-align: center;
-  color: #f8d7da;
+  color: #999;
   margin-top: 20px;
+}
+
+.alert {
+  text-align: center;
+}
+
+.CFormInput {
+  text-transform: uppercase; /* Permitir escribir en mayúsculas */
 }
 
 .category-button {
@@ -112,4 +121,14 @@
 .category-button .card-text {
   font-size: 14px;
   color: #666;
+}
+
+.context-menu {
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 4px;
 }

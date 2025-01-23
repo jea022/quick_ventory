@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { obtenerObjetos } from '../services/firestore';
-import { CRow, CCol, CFormInput, CListGroup, CListGroupItem, CContainer, CButton } from '@coreui/react';
+import { CRow, CCol, CFormInput, CListGroup, CListGroupItem, CContainer, CButton, CModal, CModalBody, CModalFooter } from '@coreui/react';
 import '../scss/_buscar.scss';
 
 const Buscar = () => {
@@ -8,6 +9,8 @@ const Buscar = () => {
   const [resultados, setResultados] = useState([]);
   const [objetos, setObjetos] = useState([]);
   const [error, setError] = useState(null);
+  const [menuContextual, setMenuContextual] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchObjetos = async () => {
@@ -16,27 +19,47 @@ const Buscar = () => {
         console.log('Objetos fetched:', objetos);
         setObjetos(objetos);
         setResultados(objetos);
-      } catch (err) {
-        console.error('Error fetching objetos:', err);
-        setError('Error fetching data');
+      } catch (error) {
+        console.error('Error fetching objetos:', error);
+        setError(error);
       }
     };
+
     fetchObjetos();
   }, []);
 
   const manejarBusqueda = (e) => {
-    const valorBusqueda = e.target.value.toLowerCase();
-    setBusqueda(valorBusqueda);
+    const valor = e.target.value;
+    setBusqueda(valor);
+  };
+
+  const manejarBuscar = () => {
     const resultadosFiltrados = objetos.filter(objeto =>
-      objeto.name.toLowerCase().includes(valorBusqueda)
+      objeto.name.toLowerCase().includes(busqueda.toLowerCase())
     );
-    console.log('Filtered results:', resultadosFiltrados);
     setResultados(resultadosFiltrados);
   };
 
   const manejarLimpiarBusqueda = () => {
     setBusqueda('');
     setResultados(objetos);
+  };
+
+  const manejarClickObjeto = (objeto) => {
+    navigate(`/espacio/${objeto.space}`);
+  };
+
+  const manejarClickDerecho = (e, objeto) => {
+    e.preventDefault();
+    setMenuContextual({
+      mouseX: e.clientX - 2,
+      mouseY: e.clientY - 4,
+      objeto,
+    });
+  };
+
+  const ocultarMenuContextual = () => {
+    setMenuContextual(null);
   };
 
   return (
@@ -54,9 +77,10 @@ const Buscar = () => {
               placeholder="Buscar Objeto..."
               value={busqueda}
               onChange={manejarBusqueda}
+              style={{ textTransform: 'uppercase' }} // Permitir escribir en mayúsculas
             />
             <div className="search-buttons">
-              <CButton className="search-button" onClick={manejarBusqueda}>Buscar</CButton>
+              <CButton className="search-button" onClick={manejarBuscar}>Buscar</CButton>
               <CButton color="secondary" className="clear-button" onClick={manejarLimpiarBusqueda}>Limpiar</CButton>
             </div>
           </CCol>
@@ -64,7 +88,7 @@ const Buscar = () => {
         <CRow className="justify-content-center mt-3">
           <CCol md="8">
             {error ? (
-              <div className="alert alert-danger">{error}</div>
+              <div className="alert alert-danger">{error.message}</div>
             ) : (
               <>
                 {resultados.length === 0 && !error && (
@@ -72,8 +96,12 @@ const Buscar = () => {
                 )}
                 <CListGroup>
                   {resultados.map((objeto, index) => (
-                    <CListGroupItem key={index}>
-                      {objeto.name}
+                    <CListGroupItem
+                      key={objeto.id}
+                      onClick={() => manejarClickObjeto(objeto)}
+                      onContextMenu={(e) => manejarClickDerecho(e, objeto)}
+                    >
+                      {objeto.name} - {objeto.quantity} unidades
                     </CListGroupItem>
                   ))}
                 </CListGroup>
@@ -82,6 +110,14 @@ const Buscar = () => {
           </CCol>
         </CRow>
       </div>
+      {menuContextual && (
+        <CModal visible={menuContextual !== null} onDismiss={ocultarMenuContextual}>
+          <CModalBody>
+            <button className="btn btn-primary" onClick={() => navigate(`/editar-item/${menuContextual.objeto.space}/${menuContextual.objeto.name}`)}>Editar</button>
+            <button className="btn btn-secondary" onClick={ocultarMenuContextual}>Cerrar</button>
+          </CModalBody>
+        </CModal>
+      )}
     </CContainer>
   );
 };

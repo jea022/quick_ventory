@@ -16,19 +16,14 @@
 @import './_header.scss';
 @import './_inicio.scss';
 
-@import 'login-register';
-@import 'responsive';
-@import 'buscar';
-@import '@coreui/coreui/dist/css/coreui.min.css';
-@import './_header.scss';
-@import './_inicio.scss';
+
 
 .body {
   display: flex;
   flex-direction: column;
   justify-content: flex;
   align-items: center;
-  height: 130vh;
+  height: 1000vh;
   background-color: #333;
   margin-top: 20px;
 }
@@ -86,13 +81,16 @@
 }
 
 .ver-espacio-container {
-  padding: 20px;
+  padding: 20px; /* Ajustar el padding según sea necesario */
   background-color: #333;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-  height: 100vh;
-
+  margin: 0; /* Eliminar el margen para que ocupe toda la pantalla */
+  width: 100vw; /* Ancho completo de la ventana */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .espacio-title {
@@ -111,9 +109,9 @@
 }
 
 .items-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
   color: white; /* Cambiar el color del texto a blanco */  
 }
 
@@ -121,5 +119,64 @@
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px; /* Ajustar el padding para hacer los cuadros más pequeños */
+  font-size: 14px; /* Ajustar el tamaño de la fuente para hacer los cuadros más pequeños */
+
+}
+
+.context-menu {
+  position: absolute;
+  z-index: 1000;
+  background-color: #333;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 8px;
+  color: rgb(0, 0, 0);
+  width: 200px;
+}
+
+.context-menu-title {
+  margin-bottom: 10px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.context-menu-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.context-menu-button.edit-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.context-menu-button.edit-button:hover {
+  background-color: #0056b3;
+}
+
+.context-menu-button.delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.context-menu-button.delete-button:hover {
+  background-color: #c82333;
+}
+
+.context-menu-button.close-button {
+  background-color: #6c757d;
+  color: white;
+}
+
+.context-menu-button.close-button:hover {
+  background-color: #5a6268;
 }

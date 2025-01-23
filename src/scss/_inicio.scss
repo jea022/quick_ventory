@@ -63,6 +63,7 @@
   background-color: #333; /* Cambia el color de fondo a #333 */
   box-sizing: border-box; /* Incluye el padding en el ancho total */
   margin-bottom: 20px;
+  height: auto;
 }
 
 .search-input {
@@ -78,13 +79,13 @@
 .search-buttons {
   display: flex;
   gap: 10px;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
 }
 
 .search-button, .clear-button, .create-space-button {
   width: 48%;
-  padding: 10px 20px;
+  padding: 20px 20px;
   font-size: 16px;
   border-radius: 8px;
   border: none;
@@ -93,27 +94,7 @@
   color: white;
 }
 
-.search-button {
-  background-color: #300eca; /* Cambia el color del botón a #4CAF50 */
-}
 
-.search-button:hover {
-  background-color: #45a049;
-}
-
-.clear-button {
-  background-color: #f44336;
-}
-
-.clear-button:hover {
-  background-color: #e53935;
-}
-
-.search-result {
-  margin-top: 20px;
-  text-align: center;
-  color: #f4f4f9;
-}
 
 .create-space-button {
   margin-top: 20px;
