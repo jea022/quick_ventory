@@ -5,7 +5,11 @@ import '../scss/_main.scss';
 
 const SearchWidget = () => {
   const [busqueda, setBusqueda] = useState('');
+  // eslint-disable-next-line no-unused-vars
+  const [resultados, setResultados] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [objetos, setObjetos] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null);
 
   useEffect(() => {

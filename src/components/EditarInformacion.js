@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { CContainer, CRow, CCol, CForm, CFormInput, CButton } from '@coreui/react';
 import '../scss/style.scss';
-import Forms from './Forms';
 
 
 const EditarInformacion = () => {
-  const navigate = useNavigate();
   const [nombre, setNombre] = useState('Ignasi');
   const [email, setEmail] = useState('ignasi@example.com');
   const [preferencias, setPreferencias] = useState('Notificaciones activadas');

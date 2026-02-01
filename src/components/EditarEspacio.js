@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { obtenerEspacioPorNombre, actualizarEspacio } from '../services/firestore';
+import { actualizarEspacio } from '../services/firestore';
 import Forms from './Forms';
 import '../scss/style.scss';
 

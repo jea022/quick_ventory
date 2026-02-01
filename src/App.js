@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './scss/style.scss';
-import Sidebar from './components/Sidebar';
-import Header from './components/Header';
+import React from 'react';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import './index.css';
+import { AuthProvider } from './context/AuthContext';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
+import Layout from './components/Layout';
 import Inicio from './components/Inicio';
 import Buscar from './components/Buscar';
 import Espacios from './components/Espacios';
@@ -19,22 +21,20 @@ import EditarEspacio from './components/EditarEspacio';
 import CrearItem from './components/CrearItem';
 import Login from './components/Login';
 import VerEspacio from './components/VerEspacio';
+import Informe from './components/Informe';
 
 
 function App() {
-  const [isSidebarVisible, setSidebarVisible] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebarVisible(!isSidebarVisible);
-  };
-
   return (
-    <Router>
-      <div className="app">
-        <Sidebar isVisible={isSidebarVisible} toggleSidebar={toggleSidebar} />
-        <Header toggleSidebar={toggleSidebar} />
-        <div className={`content ${isSidebarVisible ? 'sidebar-visible' : ''}`}>
-          <Routes>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {/* Rutas públicas sin layout */}
+          <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
+          <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
+          
+          {/* Rutas privadas con layout */}
+          <Route element={<PrivateRoute><Layout /></PrivateRoute>}>
             <Route path="/" element={<Inicio />} />
             <Route path="/buscar" element={<Buscar />} />
             <Route path="/espacios" element={<Espacios />} />
@@ -44,18 +44,17 @@ function App() {
             <Route path="/cerrar-sesion" element={<CerrarSesion />} />
             <Route path="/cambiar-contraseña" element={<CambiarContraseña />} />
             <Route path="/search-widget" element={<SearchWidget />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
             <Route path="/informacion" element={<Informacion />} />
             <Route path="/editar-item" element={<EditarItem />} />
             <Route path="/editar-informacion" element={<EditarInformacion />} />
             <Route path="/editar-espacio/:spaceId" element={<EditarEspacio />} />
             <Route path="/crear-item/:spaceName" element={<CrearItem />} />
-            <Route path="/editar-item/:spaceName/:itemName" element={<EditarItem />} /> {/* Ruta para editar un ítem */}
-          </Routes>
-        </div>
-      </div>
-    </Router>
+            <Route path="/editar-item/:spaceName/:itemName" element={<EditarItem />} />
+            <Route path="/informe" element={<Informe />} />
+          </Route>
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
