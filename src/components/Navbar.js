@@ -35,12 +35,11 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 gradient-purple rounded-xl flex items-center justify-center pulse-glow">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-              </svg>
-            </div>
-            <span className="font-display font-bold text-xl text-white">QuickVentory</span>
+            <img 
+              src={process.env.PUBLIC_URL + '/images/logo.png'} 
+              alt="QuickVentory" 
+              className="h-10 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}

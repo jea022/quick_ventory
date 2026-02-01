@@ -41,12 +41,11 @@ const Register = () => {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="w-16 h-16 gradient-purple rounded-2xl flex items-center justify-center mx-auto mb-4 pulse-glow">
-            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-            </svg>
-          </div>
-          <h1 className="font-display text-3xl font-bold text-white">QuickVentory</h1>
+          <img 
+            src={process.env.PUBLIC_URL + '/images/logo.png'} 
+            alt="QuickVentory" 
+            className="h-24 w-auto mx-auto mb-4"
+          />
           <p className="text-gray-400 mt-2">Crea tu cuenta gratuita</p>
         </div>
 
