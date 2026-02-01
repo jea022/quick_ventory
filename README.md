@@ -1,70 +1,115 @@
-# Getting Started with Create React App
+# QuickVentory 📦
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sistema de gestión de inventario moderno y fácil de usar, construido con React y Firebase.
 
-## Available Scripts
+![QuickVentory](https://img.shields.io/badge/React-19.0.0-blue) ![Firebase](https://img.shields.io/badge/Firebase-11.2.0-orange) ![Tailwind](https://img.shields.io/badge/Tailwind-CSS-38B2AC)
 
-In the project directory, you can run:
+## 🌐 Demo
 
-### `npm start`
+**[Ver aplicación en vivo](https://jea022.github.io/quick_ventory)**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Características
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 🔐 **Autenticación segura** - Login y registro con Firebase Auth
+- 📦 **Gestión de espacios** - Organiza tu inventario en espacios personalizados
+- 📋 **Control de items** - Añade, edita y elimina items con cantidades
+- 🔍 **Búsqueda rápida** - Encuentra cualquier item en segundos
+- 📊 **Informes** - Genera informes y compara con revisiones anteriores
+- 🌙 **Diseño moderno** - Interfaz oscura con glassmorphism
+- 📱 **Responsive** - Funciona en móvil, tablet y desktop
 
-### `npm test`
+## 🛠️ Tecnologías
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend**: React 19, React Router DOM 7
+- **Estilos**: Tailwind CSS, SCSS
+- **Backend**: Firebase (Auth + Firestore)
+- **Despliegue**: GitHub Pages
 
-### `npm run build`
+## 🚀 Instalación
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clona el repositorio:
+```bash
+git clone https://github.com/jea022/quick_ventory.git
+cd quick_ventory
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Instala las dependencias:
+```bash
+npm install --legacy-peer-deps
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Inicia el servidor de desarrollo:
+```bash
+npm start
+```
 
-### `npm run eject`
+4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📦 Scripts disponibles
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Comando | Descripción |
+|---------|-------------|
+| `npm start` | Inicia el servidor de desarrollo |
+| `npm run build` | Compila para producción |
+| `npm run deploy` | Despliega en GitHub Pages |
+| `npm test` | Ejecuta los tests |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🔥 Configuración de Firebase
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+El proyecto usa Firebase para autenticación y base de datos. Para usar tu propia instancia:
 
-## Learn More
+1. Crea un proyecto en [Firebase Console](https://console.firebase.google.com/)
+2. Habilita Authentication (Email/Password)
+3. Crea una base de datos en Firestore
+4. Copia tu configuración en `src/firebase.js`
+5. Configura las reglas de Firestore:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```javascript
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    match /espacios/{document=**} {
+      allow read, write: if request.auth != null;
+    }
+    match /items/{document=**} {
+      allow read, write: if request.auth != null;
+    }
+    match /informes/{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📁 Estructura del proyecto
 
-### Code Splitting
+```
+src/
+├── components/          # Componentes React
+│   ├── Navbar.js       # Barra de navegación
+│   ├── Layout.js       # Layout principal
+│   ├── Inicio.js       # Dashboard
+│   ├── Espacios.js     # Lista de espacios
+│   ├── VerEspacio.js   # Detalle de espacio
+│   ├── Informe.js      # Generador de informes
+│   ├── Login.js        # Página de login
+│   └── ...
+├── context/            # Contextos de React
+│   └── AuthContext.js  # Contexto de autenticación
+├── services/           # Servicios de Firebase
+│   ├── firestore.js    # Operaciones de Firestore
+│   └── informes.js     # Servicio de informes
+└── utils/              # Utilidades
+    └── seedData.js     # Datos de prueba
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 👤 Autor
 
-### Analyzing the Bundle Size
+**jea022**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📄 Licencia
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Este proyecto está bajo la Licencia ISC.
